@@ -130,8 +130,8 @@
     .hero-bg {
       position: absolute; inset: 0;
       background:
-        radial-gradient(ellipse 60% 80% at 70% 50%, rgba(196,30,58,.12) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 60% at 30% 80%, rgba(196,30,58,.06) 0%, transparent 60%);
+        radial-gradient(ellipse 80% 80% at 50% 40%, rgba(196,30,58,.10) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 60% at 50% 90%, rgba(196,30,58,.06) 0%, transparent 60%);
     }
     .hero-lines {
       position: absolute; inset: 0; overflow: hidden; opacity: .08;
@@ -153,40 +153,51 @@
     @keyframes linePulse {
       0%,100% { opacity: .3; } 50% { opacity: 1; }
     }
-    .hero-content {
+    .hero-center {
       position: relative; z-index: 2;
-      padding: 0 5vw; padding-top: 72px;
-      max-width: 780px;
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center; padding: 0 5vw; padding-top: 72px;
+      max-width: 640px; width: 100%;
     }
-    .hero-eyebrow {
-      display: inline-flex; align-items: center; gap: 12px;
-      font-size: 11px; letter-spacing: 4px;
-      text-transform: uppercase; color: var(--red);
-      font-weight: 600; margin-bottom: 24px;
+    .hero-logo {
+      width: 140px; height: 140px;
+      border-radius: 50%; object-fit: cover;
+      border: 3px solid var(--red);
+      margin-bottom: 32px;
+      box-shadow: 0 0 40px var(--red-glow);
     }
-    .hero-eyebrow::before {
-      content: ''; display: block;
-      width: 40px; height: 1px; background: var(--red);
-    }
-    .hero-title {
+    .hero-heading {
       font-family: var(--font-display);
-      font-size: clamp(64px, 10vw, 120px);
-      line-height: .92;
-      letter-spacing: 4px;
+      font-size: clamp(28px, 4vw, 48px);
+      letter-spacing: 2px; line-height: 1.15;
+      color: var(--white); margin-bottom: 16px;
+    }
+    .hero-sub {
+      font-size: 15px; color: var(--gray);
+      line-height: 1.7; margin-bottom: 48px;
+    }
+    .hero-btns {
+      display: flex; flex-direction: column;
+      gap: 14px; width: 100%; max-width: 420px;
+    }
+    .hero-btn {
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.15);
       color: var(--white);
-      margin-bottom: 28px;
+      padding: 18px 32px; border-radius: 50px;
+      font-size: 15px; font-weight: 600; letter-spacing: 1px;
+      transition: background .25s, border-color .25s, transform .2s, box-shadow .25s;
+      backdrop-filter: blur(8px);
     }
-    .hero-title .accent { color: var(--red); }
-    .hero-title .outline {
-      -webkit-text-stroke: 2px var(--white);
-      color: transparent;
+    .hero-btn i { color: var(--red); font-size: 16px; }
+    .hero-btn:hover {
+      background: var(--red);
+      border-color: var(--red);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px var(--red-glow);
     }
-    .hero-desc {
-      font-size: 16px; line-height: 1.8;
-      color: var(--gray); max-width: 480px;
-      margin-bottom: 48px;
-    }
-    .hero-actions { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+    .hero-btn:hover i { color: var(--white); }
     .btn-primary {
       display: inline-flex; align-items: center; gap: 10px;
       background: var(--red); color: var(--white);
@@ -210,22 +221,6 @@
     }
     .btn-outline:hover {
       border-color: var(--red); background: rgba(196,30,58,.08);
-    }
-    .hero-stats {
-      position: absolute; bottom: 60px; right: 5vw;
-      display: flex; gap: 48px; z-index: 2;
-    }
-    .stat { text-align: center; }
-    .stat-number {
-      font-family: var(--font-display);
-      font-size: 48px; line-height: 1;
-      color: var(--white);
-    }
-    .stat-number span { color: var(--red); }
-    .stat-label {
-      font-size: 10px; letter-spacing: 3px;
-      text-transform: uppercase; color: var(--gray2);
-      margin-top: 4px;
     }
     .hero-scroll {
       position: absolute; bottom: 32px; left: 50%;
@@ -709,38 +704,19 @@
   <section id="hero">
     <div class="hero-bg"></div>
     <div class="hero-lines"></div>
-    <div class="hero-content">
-      <div class="hero-eyebrow fade-up">Barbearia Premium — 2 Unidades</div>
-      <h1 class="hero-title fade-up">
-        <span class="line">ESTILO</span>
-        <span class="line outline">PRECIS&Atilde;O</span>
-        <span class="line"><span class="accent">TRADIÇÃO</span></span>
-      </h1>
-      <p class="hero-desc fade-up">
-        Seu melhor estilo começa com um bom corte. Duas unidades, o mesmo padrão
-        de qualidade e atendimento que você merece.
-      </p>
-      <div class="hero-actions fade-up">
-        <a href="#lojas" class="btn-primary">
-          <i class="fa fa-calendar-check"></i> Agendar Agora
+    <div class="hero-center fade-up">
+      <img src="logobarbearia.png" alt="Barbearia Vitão do Corte" class="hero-logo" />
+      <h1 class="hero-heading">Agende seu horário na<br>unidade de sua preferência</h1>
+      <p class="hero-sub">Seu melhor estilo começa com um bom corte.<br>Duas unidades, o mesmo padrão de qualidade.</p>
+      <div class="hero-btns">
+        <a href="https://sites.appbarber.com.br/barbeariavitaod-a4rh" class="hero-btn" target="_blank">
+          <i class="fa fa-calendar-check"></i>
+          <span>Unidade Vila Flórida</span>
         </a>
-        <a href="#servicos" class="btn-outline">
-          Ver Serviços <i class="fa fa-arrow-right"></i>
+        <a href="https://sites.appbarber.com.br/barbeariavitaod-5az3" class="hero-btn" target="_blank">
+          <i class="fa fa-calendar-check"></i>
+          <span>Unidade Luisiana</span>
         </a>
-      </div>
-    </div>
-    <div class="hero-stats fade-up">
-      <div class="stat">
-        <div class="stat-number">2<span>K</span><span style="color:var(--red)">+</span></div>
-        <div class="stat-label">Clientes</div>
-      </div>
-      <div class="stat">
-        <div class="stat-number">7<span style="color:var(--red)">+</span></div>
-        <div class="stat-label">Anos</div>
-      </div>
-      <div class="stat">
-        <div class="stat-number">2</div>
-        <div class="stat-label">Unidades</div>
       </div>
     </div>
     <div class="hero-scroll">
