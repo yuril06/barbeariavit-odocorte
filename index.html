@@ -471,6 +471,48 @@
     }
     .btn-maps:hover { border-color: var(--red); color: var(--white); }
 
+    /* ─── PRODUTOS ───────────────────────────────────────────────── */
+    #produtos {
+      padding: 120px 5vw;
+      background: var(--black);
+    }
+    .produtos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 3px;
+    }
+    .produto-card {
+      background: var(--dark2);
+      display: flex; flex-direction: column;
+      overflow: hidden;
+      transition: background .3s;
+      position: relative;
+    }
+    .produto-card::before {
+      content: '';
+      position: absolute; bottom: 0; left: 0;
+      width: 100%; height: 3px;
+      background: var(--red);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform .4s;
+    }
+    .produto-card:hover { background: var(--dark3); }
+    .produto-card:hover::before { transform: scaleX(1); }
+    .produto-img {
+      height: 220px;
+      background: var(--dark3);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .produto-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+    .produto-card:hover .produto-img img { transform: scale(1.05); }
+    .produto-placeholder { display: flex; flex-direction: column; align-items: center; gap: 10px; color: var(--dark); }
+    .produto-placeholder i { font-size: 40px; }
+    .produto-info { padding: 24px 28px 28px; display: flex; flex-direction: column; gap: 8px; }
+    .produto-name { font-family: var(--font-display); font-size: 20px; letter-spacing: 1px; }
+    .produto-desc { font-size: 13px; color: var(--gray); line-height: 1.6; }
+    .produto-price { font-family: var(--font-display); font-size: 22px; color: var(--red); margin-top: 8px; }
+
     /* ─── GALLERY (PLACEHOLDER) ──────────────────────────────────── */
     #galeria {
       padding: 120px 5vw;
@@ -680,9 +722,9 @@
     </div>
     <ul class="nav-links">
       <li><a href="#servicos">Serviços</a></li>
-      <li><a href="#sobre">Sobre</a></li>
-      <li><a href="#lojas">Lojas</a></li>
       <li><a href="#galeria">Galeria</a></li>
+      <li><a href="#produtos">Produtos</a></li>
+      <li><a href="#lojas">Lojas</a></li>
     </ul>
     <a href="#lojas" class="nav-cta">Agendar Agora</a>
     <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
@@ -694,9 +736,9 @@
   <div class="mobile-menu" id="mobileMenu">
     <button class="mobile-close" id="mobileClose"><i class="fa fa-times"></i></button>
     <a href="#servicos" class="mobile-link">Serviços</a>
-    <a href="#sobre" class="mobile-link">Sobre</a>
-    <a href="#lojas" class="mobile-link">Lojas</a>
     <a href="#galeria" class="mobile-link">Galeria</a>
+    <a href="#produtos" class="mobile-link">Produtos</a>
+    <a href="#lojas" class="mobile-link">Lojas</a>
     <a href="#lojas" class="btn-primary">Agendar</a>
   </div>
 
@@ -781,60 +823,85 @@
   <!-- BARBER POLE DIVIDER -->
   <div class="pole-divider"></div>
 
-  <!-- SOBRE -->
-  <section id="sobre">
-    <div class="about-visual fade-up">
-      <div class="about-img-frame">
-        <!-- Substitua pela sua imagem -->
-        <div class="about-img-placeholder">
-          <i class="fa fa-image"></i>
-          <span>Adicione sua foto aqui</span>
-        </div>
-      </div>
-      <div class="about-badge">
-        <span>7+</span>
-        <span>Anos</span>
-      </div>
+  <!-- GALERIA -->
+  <section id="galeria">
+    <div class="section-header fade-up">
+      <div class="section-tag">Nosso Trabalho</div>
+      <h2 class="section-title">
+        <span class="line">Nossa</span>
+        <span class="line italic">Galeria</span>
+      </h2>
+      <div class="section-line"></div>
     </div>
-    <div class="about-text fade-up">
-      <div class="section-header">
-        <div class="section-tag">Nossa história</div>
-        <h2 class="section-title" style="text-align:left">
-          <span class="line">Tradição e</span>
-          <span class="line italic">Excelência</span>
-        </h2>
-        <div class="section-line"></div>
+    <div class="gallery-grid fade-up">
+      <div class="gallery-item"><div class="gallery-placeholder"><i class="fa fa-image"></i><span>Foto 1</span></div></div>
+      <div class="gallery-item"><div class="gallery-placeholder"><i class="fa fa-image"></i><span>Foto 2</span></div></div>
+      <div class="gallery-item"><div class="gallery-placeholder"><i class="fa fa-image"></i><span>Foto 3</span></div></div>
+      <div class="gallery-item"><div class="gallery-placeholder"><i class="fa fa-image"></i><span>Foto 4</span></div></div>
+      <div class="gallery-item"><div class="gallery-placeholder"><i class="fa fa-image"></i><span>Foto 5</span></div></div>
+    </div>
+  </section>
+
+  <!-- BARBER POLE DIVIDER -->
+  <div class="pole-divider"></div>
+
+  <!-- PRODUTOS -->
+  <section id="produtos">
+    <div class="section-header fade-up">
+      <div class="section-tag">Loja</div>
+      <h2 class="section-title">
+        <span class="line">Nossos</span>
+        <span class="line italic">Produtos</span>
+      </h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="produtos-grid">
+      <div class="produto-card fade-up">
+        <div class="produto-img"><div class="produto-placeholder"><i class="fa fa-box-open"></i></div></div>
+        <div class="produto-info">
+          <div class="produto-name">Pomada Modeladora</div>
+          <div class="produto-desc">Fixação forte com acabamento natural. Ideal para todos os tipos de cabelo.</div>
+          <div class="produto-price">R$ --</div>
+        </div>
       </div>
-      <p>
-        A <strong>Barbearia Vitão do Corte</strong> nasceu da paixão pelo estilo masculino e do desejo
-        de oferecer um serviço que vai além de um simples corte. Um espaço onde tradição
-        e modernidade se encontram.
-      </p>
-      <p>
-        Com profissionais altamente treinados e ambiente cuidadosamente projetado para
-        proporcionar conforto e exclusividade, cada visita se torna uma experiência única
-        que você vai querer repetir.
-      </p>
-      <div class="about-highlights">
-        <div class="highlight">
-          <i class="fa fa-award"></i>
-          <strong>Profissionais Certificados</strong>
-          <span>Equipe treinada nas melhores técnicas</span>
+      <div class="produto-card fade-up">
+        <div class="produto-img"><div class="produto-placeholder"><i class="fa fa-box-open"></i></div></div>
+        <div class="produto-info">
+          <div class="produto-name">Óleo para Barba</div>
+          <div class="produto-desc">Hidrata, amacia e dá brilho à barba. Fragrância exclusiva.</div>
+          <div class="produto-price">R$ --</div>
         </div>
-        <div class="highlight">
-          <i class="fa fa-flask"></i>
-          <strong>Produtos Premium</strong>
-          <span>Marcas selecionadas para melhor resultado</span>
+      </div>
+      <div class="produto-card fade-up">
+        <div class="produto-img"><div class="produto-placeholder"><i class="fa fa-box-open"></i></div></div>
+        <div class="produto-info">
+          <div class="produto-name">Shampoo para Barba</div>
+          <div class="produto-desc">Limpeza profunda sem ressecar. Fórmula especial para barba e pele.</div>
+          <div class="produto-price">R$ --</div>
         </div>
-        <div class="highlight">
-          <i class="fa fa-clock"></i>
-          <strong>Horários Flexíveis</strong>
-          <span>Funcionamos nos horários que você precisa</span>
+      </div>
+      <div class="produto-card fade-up">
+        <div class="produto-img"><div class="produto-placeholder"><i class="fa fa-box-open"></i></div></div>
+        <div class="produto-info">
+          <div class="produto-name">Balm para Barba</div>
+          <div class="produto-desc">Condiciona e modela a barba deixando-a macia e no lugar.</div>
+          <div class="produto-price">R$ --</div>
         </div>
-        <div class="highlight">
-          <i class="fa fa-map-marker-alt"></i>
-          <strong>2 Unidades</strong>
-          <span>Sempre perto de você na cidade</span>
+      </div>
+      <div class="produto-card fade-up">
+        <div class="produto-img"><div class="produto-placeholder"><i class="fa fa-box-open"></i></div></div>
+        <div class="produto-info">
+          <div class="produto-name">Cera Capilar</div>
+          <div class="produto-desc">Textura leve com fixação média. Perfeito para looks modernos.</div>
+          <div class="produto-price">R$ --</div>
+        </div>
+      </div>
+      <div class="produto-card fade-up">
+        <div class="produto-img"><div class="produto-placeholder"><i class="fa fa-box-open"></i></div></div>
+        <div class="produto-info">
+          <div class="produto-name">Loção Pós-Barba</div>
+          <div class="produto-desc">Acalma a pele após o barbear e previne irritações.</div>
+          <div class="produto-price">R$ --</div>
         </div>
       </div>
     </div>
@@ -926,54 +993,6 @@
     </div>
   </section>
 
-  <!-- BARBER POLE DIVIDER -->
-  <div class="pole-divider"></div>
-
-  <!-- GALERIA -->
-  <section id="galeria">
-    <div class="section-header fade-up">
-      <div class="section-tag">Nosso Trabalho</div>
-      <h2 class="section-title">
-        <span class="line">Nossa</span>
-        <span class="line italic">Galeria</span>
-      </h2>
-      <div class="section-line"></div>
-    </div>
-    <div class="gallery-grid fade-up">
-      <!-- Substitua os divs placeholder por suas fotos -->
-      <div class="gallery-item">
-        <div class="gallery-placeholder">
-          <i class="fa fa-image"></i>
-          <span>Foto 1</span>
-        </div>
-      </div>
-      <div class="gallery-item">
-        <div class="gallery-placeholder">
-          <i class="fa fa-image"></i>
-          <span>Foto 2</span>
-        </div>
-      </div>
-      <div class="gallery-item">
-        <div class="gallery-placeholder">
-          <i class="fa fa-image"></i>
-          <span>Foto 3</span>
-        </div>
-      </div>
-      <div class="gallery-item">
-        <div class="gallery-placeholder">
-          <i class="fa fa-image"></i>
-          <span>Foto 4</span>
-        </div>
-      </div>
-      <div class="gallery-item">
-        <div class="gallery-placeholder">
-          <i class="fa fa-image"></i>
-          <span>Foto 5</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- FOOTER -->
   <footer>
     <div class="footer-top">
@@ -998,9 +1017,9 @@
         <h4>Navegação</h4>
         <ul>
           <li><a href="#servicos">Serviços</a></li>
-          <li><a href="#sobre">Sobre Nós</a></li>
-          <li><a href="#lojas">Nossas Lojas</a></li>
           <li><a href="#galeria">Galeria</a></li>
+          <li><a href="#produtos">Produtos</a></li>
+          <li><a href="#lojas">Nossas Lojas</a></li>
         </ul>
       </div>
       <div class="footer-col">
