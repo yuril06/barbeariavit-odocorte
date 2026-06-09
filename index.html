@@ -236,6 +236,50 @@
       50% { transform: translateX(-50%) translateY(6px); }
     }
 
+    /* ─── PROMO TICKER ───────────────────────────────────────────── */
+    .promo-ticker {
+      background: var(--red);
+      overflow: hidden;
+      padding: 14px 0;
+      position: relative;
+    }
+    .promo-ticker::before,
+    .promo-ticker::after {
+      content: '';
+      position: absolute; top: 0; bottom: 0;
+      width: 80px; z-index: 2;
+    }
+    .promo-ticker::before { left: 0; background: linear-gradient(to right, var(--red), transparent); }
+    .promo-ticker::after  { right: 0; background: linear-gradient(to left, var(--red), transparent); }
+    .ticker-track {
+      display: flex; align-items: center; gap: 0;
+      white-space: nowrap;
+      animation: tickerScroll 28s linear infinite;
+    }
+    .ticker-track:hover { animation-play-state: paused; }
+    @keyframes tickerScroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .ticker-item {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--font-display);
+      font-size: 16px; letter-spacing: 3px;
+      color: rgba(255,255,255,.75);
+      padding: 0 40px;
+    }
+    .ticker-item i { font-size: 13px; opacity: .7; }
+    .ticker-item.highlight {
+      color: var(--white);
+      font-size: 18px;
+      letter-spacing: 2px;
+    }
+    .ticker-item.highlight::before {
+      content: '—';
+      margin-right: 16px;
+      opacity: .4;
+    }
+
     /* ─── BARBER POLE DIVIDER ────────────────────────────────────── */
     .pole-divider {
       height: 4px; width: 100%;
@@ -766,6 +810,24 @@
       <span>Explorar</span>
     </div>
   </section>
+
+  <!-- PROMO TICKER -->
+  <div class="promo-ticker">
+    <div class="ticker-track">
+      <span class="ticker-item"><i class="fa fa-star"></i> OFERTA ESPECIAL</span>
+      <span class="ticker-item highlight">PRIMEIRO CORTE POR R$ 30,00</span>
+      <span class="ticker-item"><i class="fa fa-scissors"></i> QUALIDADE QUE FALA POR VOCÊ</span>
+      <span class="ticker-item highlight">AGENDE AGORA E APROVEITE</span>
+      <span class="ticker-item"><i class="fa fa-star"></i> OFERTA ESPECIAL</span>
+      <span class="ticker-item highlight">PRIMEIRO CORTE POR R$ 30,00</span>
+      <span class="ticker-item"><i class="fa fa-scissors"></i> QUALIDADE QUE FALA POR VOCÊ</span>
+      <span class="ticker-item highlight">AGENDE AGORA E APROVEITE</span>
+      <span class="ticker-item"><i class="fa fa-star"></i> OFERTA ESPECIAL</span>
+      <span class="ticker-item highlight">PRIMEIRO CORTE POR R$ 30,00</span>
+      <span class="ticker-item"><i class="fa fa-scissors"></i> QUALIDADE QUE FALA POR VOCÊ</span>
+      <span class="ticker-item highlight">AGENDE AGORA E APROVEITE</span>
+    </div>
+  </div>
 
   <!-- BARBER POLE DIVIDER -->
   <div class="pole-divider"></div>
