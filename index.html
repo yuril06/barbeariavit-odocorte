@@ -236,48 +236,70 @@
       50% { transform: translateX(-50%) translateY(6px); }
     }
 
-    /* ─── PROMO TICKER ───────────────────────────────────────────── */
-    .promo-ticker {
-      background: var(--red);
+    /* ─── PROMO DESTAQUE ─────────────────────────────────────────── */
+    #promo {
+      padding: 100px 5vw;
+      background: var(--dark);
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
       overflow: hidden;
-      padding: 14px 0;
-      position: relative;
     }
-    .promo-ticker::before,
-    .promo-ticker::after {
-      content: '';
-      position: absolute; top: 0; bottom: 0;
-      width: 80px; z-index: 2;
+    .promo-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 80% at 50% 50%, rgba(196,30,58,.15) 0%, transparent 70%);
     }
-    .promo-ticker::before { left: 0; background: linear-gradient(to right, var(--red), transparent); }
-    .promo-ticker::after  { right: 0; background: linear-gradient(to left, var(--red), transparent); }
-    .ticker-track {
-      display: flex; align-items: center; gap: 0;
-      white-space: nowrap;
-      animation: tickerScroll 28s linear infinite;
+    .promo-content {
+      position: relative; z-index: 2;
+      display: flex; flex-direction: column;
+      align-items: center; gap: 12px;
+      max-width: 640px;
     }
-    .ticker-track:hover { animation-play-state: paused; }
-    @keyframes tickerScroll {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
+    .promo-eyebrow {
+      font-size: 12px; letter-spacing: 5px;
+      text-transform: uppercase; color: var(--red);
+      font-weight: 700; display: flex; align-items: center; gap: 10px;
     }
-    .ticker-item {
-      display: inline-flex; align-items: center; gap: 10px;
+    .promo-eyebrow i { font-size: 10px; }
+    .promo-price-wrap {
+      display: flex; align-items: flex-start; justify-content: center;
+      line-height: 1;
+      margin: 8px 0 0;
+    }
+    .promo-currency {
       font-family: var(--font-display);
-      font-size: 16px; letter-spacing: 3px;
-      color: rgba(255,255,255,.75);
-      padding: 0 40px;
-    }
-    .ticker-item i { font-size: 13px; opacity: .7; }
-    .ticker-item.highlight {
+      font-size: clamp(28px, 5vw, 48px);
       color: var(--white);
-      font-size: 18px;
-      letter-spacing: 2px;
+      margin-top: 12px; margin-right: 4px;
     }
-    .ticker-item.highlight::before {
-      content: '—';
-      margin-right: 16px;
-      opacity: .4;
+    .promo-value {
+      font-family: var(--font-display);
+      font-size: clamp(100px, 20vw, 180px);
+      color: var(--white);
+      letter-spacing: -4px;
+      line-height: .9;
+    }
+    .promo-cents {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 5vw, 48px);
+      color: var(--gray);
+      margin-top: 16px;
+    }
+    .promo-divider-text {
+      font-size: 13px; letter-spacing: 6px;
+      color: var(--gray2); text-transform: uppercase;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .promo-destaque {
+      font-family: var(--font-display);
+      font-size: clamp(48px, 10vw, 96px);
+      letter-spacing: 6px; line-height: 1;
+      color: var(--red);
+    }
+    .promo-destaque span { color: var(--white); }
+    .promo-sub {
+      font-size: 15px; color: var(--gray);
+      line-height: 1.8; margin-top: 4px;
     }
 
     /* ─── BARBER POLE DIVIDER ────────────────────────────────────── */
@@ -811,23 +833,24 @@
     </div>
   </section>
 
-  <!-- PROMO TICKER -->
-  <div class="promo-ticker">
-    <div class="ticker-track">
-      <span class="ticker-item"><i class="fa fa-star"></i> OFERTA ESPECIAL</span>
-      <span class="ticker-item highlight">PRIMEIRO CORTE POR R$ 30,00</span>
-      <span class="ticker-item"><i class="fa fa-scissors"></i> QUALIDADE QUE FALA POR VOCÊ</span>
-      <span class="ticker-item highlight">AGENDE AGORA E APROVEITE</span>
-      <span class="ticker-item"><i class="fa fa-star"></i> OFERTA ESPECIAL</span>
-      <span class="ticker-item highlight">PRIMEIRO CORTE POR R$ 30,00</span>
-      <span class="ticker-item"><i class="fa fa-scissors"></i> QUALIDADE QUE FALA POR VOCÊ</span>
-      <span class="ticker-item highlight">AGENDE AGORA E APROVEITE</span>
-      <span class="ticker-item"><i class="fa fa-star"></i> OFERTA ESPECIAL</span>
-      <span class="ticker-item highlight">PRIMEIRO CORTE POR R$ 30,00</span>
-      <span class="ticker-item"><i class="fa fa-scissors"></i> QUALIDADE QUE FALA POR VOCÊ</span>
-      <span class="ticker-item highlight">AGENDE AGORA E APROVEITE</span>
+  <!-- PROMO DESTAQUE -->
+  <section id="promo">
+    <div class="promo-bg"></div>
+    <div class="promo-content fade-up">
+      <div class="promo-eyebrow"><i class="fa fa-star"></i> OFERTA ESPECIAL <i class="fa fa-star"></i></div>
+      <div class="promo-price-wrap">
+        <div class="promo-currency">R$</div>
+        <div class="promo-value">30</div>
+        <div class="promo-cents">,00</div>
+      </div>
+      <div class="promo-divider-text">— O PRIMEIRO —</div>
+      <div class="promo-destaque">CORTE<span> NA BARBEARIA!</span></div>
+      <p class="promo-sub">Qualidade que fala por você.<br>Marca aquele amigo que ainda não conhece a Vitão do Corte!</p>
+      <a href="#lojas" class="btn-primary" style="margin-top:8px">
+        <i class="fa fa-calendar-check"></i> Agendar agora
+      </a>
     </div>
-  </div>
+  </section>
 
   <!-- BARBER POLE DIVIDER -->
   <div class="pole-divider"></div>
