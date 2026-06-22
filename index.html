@@ -480,7 +480,21 @@
     /* ─── LOJAS / AGENDAMENTO ────────────────────────────────────── */
     #lojas {
       padding: 120px 5vw;
-      background: var(--dark);
+      background-image: url('hero.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      position: relative;
+    }
+    #lojas::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: rgba(8,8,8,.88);
+      z-index: 0;
+    }
+    #lojas .section-header,
+    #lojas .lojas-grid {
+      position: relative; z-index: 1;
     }
     .lojas-grid {
       display: grid; grid-template-columns: 1fr 1fr;
