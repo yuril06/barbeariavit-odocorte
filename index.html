@@ -732,6 +732,79 @@
       50% { box-shadow: 0 4px 36px rgba(37,211,102,.7); }
     }
 
+    /* ─── MODAL UNIDADE ─────────────────────────────────────────── */
+    .wa-modal-overlay {
+      position: fixed; inset: 0; z-index: 2000;
+      background: rgba(0,0,0,.75);
+      backdrop-filter: blur(6px);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity .3s;
+      padding: 20px;
+    }
+    .wa-modal-overlay.open { opacity: 1; pointer-events: all; }
+    .wa-modal {
+      background: var(--dark2);
+      border: 1px solid var(--dark3);
+      border-radius: 12px;
+      padding: 40px 36px;
+      width: 100%; max-width: 400px;
+      position: relative;
+      transform: translateY(20px);
+      transition: transform .3s;
+      text-align: center;
+    }
+    .wa-modal-overlay.open .wa-modal { transform: translateY(0); }
+    .wa-modal-close {
+      position: absolute; top: 16px; right: 16px;
+      background: var(--dark3); border: none; cursor: pointer;
+      width: 32px; height: 32px; border-radius: 50%;
+      color: var(--gray); font-size: 14px;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s, color .2s;
+    }
+    .wa-modal-close:hover { background: var(--red); color: var(--white); }
+    .wa-modal-logo img {
+      width: 72px; height: 72px; border-radius: 50%;
+      object-fit: cover; margin: 0 auto 20px;
+    }
+    .wa-modal-title {
+      font-family: var(--font-display);
+      font-size: 26px; letter-spacing: 2px;
+      margin-bottom: 6px;
+    }
+    .wa-modal-sub {
+      font-size: 13px; color: var(--gray); margin-bottom: 28px;
+    }
+    .wa-modal-btns { display: flex; flex-direction: column; gap: 12px; }
+    .wa-modal-btn {
+      display: flex; align-items: center; gap: 14px;
+      background: var(--dark3);
+      border: 1px solid rgba(37,211,102,.2);
+      border-radius: 8px; padding: 16px 18px;
+      text-align: left; cursor: pointer;
+      transition: background .2s, border-color .2s, transform .2s;
+    }
+    .wa-modal-btn:hover {
+      background: rgba(37,211,102,.08);
+      border-color: #25d366;
+      transform: translateX(4px);
+    }
+    .wa-modal-btn-icon {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: #25d366; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; color: var(--white);
+    }
+    .wa-modal-btn-info { flex: 1; }
+    .wa-modal-btn-info span {
+      display: block; font-weight: 600; font-size: 15px;
+    }
+    .wa-modal-btn-info small {
+      font-size: 11px; color: var(--gray2);
+    }
+    .wa-modal-btn .fa-chevron-right { color: var(--gray2); font-size: 12px; }
+
     /* ─── MOBILE NAV OPEN ────────────────────────────────────────── */
     .mobile-menu {
       position: fixed; inset: 0; z-index: 998;
@@ -848,7 +921,7 @@
       <span class="promo-faixa-text">
         No seu primeiro corte, pague apenas <span class="promo-price">R$ 30,00</span>
       </span>
-      <a href="https://wa.me/5511917149210?text=Olá!%20Vi%20a%20oferta%20do%20primeiro%20corte%20por%20R%24%2030%2C00%20e%20gostaria%20de%20agendar!" class="promo-faixa-btn" target="_blank">
+      <a href="#" onclick="openWAModal('Olá! Vi a oferta do primeiro corte por R$ 30,00 e gostaria de agendar!');return false;" class="promo-faixa-btn">
         <i class="fab fa-whatsapp"></i> Quero aproveitar
       </a>
     </div>
@@ -873,42 +946,42 @@
         <div class="service-name">Corte</div>
         <div class="service-desc">Na tesoura ou na máquina, o corte certo pro seu estilo com acabamento caprichado.</div>
         <div class="service-price">A consultar</div>
-        <a href="https://wa.me/5511917149210?text=Olá!%20Gostaria%20de%20agendar%20um%20Corte." class="service-btn" target="_blank"><i class="fab fa-whatsapp"></i> Agendar</a>
+        <a href="#" onclick="openWAModal('Olá! Gostaria de agendar um Corte.');return false;" class="service-btn"><i class="fab fa-whatsapp"></i> Agendar</a>
       </div>
       <div class="service-card fade-up">
         <div class="service-icon"><i class="fa fa-user-tie"></i></div>
         <div class="service-name">Barba</div>
         <div class="service-desc">Aparagem, alinhamento e modelagem. Barba no ponto com navalha e acabamento impecável.</div>
         <div class="service-price">R$ 35,00</div>
-        <a href="https://wa.me/5511917149210?text=Olá!%20Gostaria%20de%20agendar%20uma%20Barba." class="service-btn" target="_blank"><i class="fab fa-whatsapp"></i> Agendar</a>
+        <a href="#" onclick="openWAModal('Olá! Gostaria de agendar uma Barba.');return false;" class="service-btn"><i class="fab fa-whatsapp"></i> Agendar</a>
       </div>
       <div class="service-card fade-up">
         <div class="service-icon"><i class="fa fa-fire"></i></div>
         <div class="service-name">Corte + Barba</div>
         <div class="service-desc">O combo perfeito. Corte e barba numa visita só — sai renovado do jeito que gosta.</div>
         <div class="service-price">R$ 80,00</div>
-        <a href="https://wa.me/5511917149210?text=Olá!%20Gostaria%20de%20agendar%20o%20Combo%20Corte%20%2B%20Barba." class="service-btn" target="_blank"><i class="fab fa-whatsapp"></i> Agendar</a>
+        <a href="#" onclick="openWAModal('Olá! Gostaria de agendar o Combo Corte + Barba.');return false;" class="service-btn"><i class="fab fa-whatsapp"></i> Agendar</a>
       </div>
       <div class="service-card fade-up">
         <div class="service-icon"><i class="fa fa-child"></i></div>
         <div class="service-name">Corte Infantil</div>
         <div class="service-desc">O corte ideal para seu filho, no tempo dele e com a paciência que ele merece.</div>
         <div class="service-price">R$ 45,00</div>
-        <a href="https://wa.me/5511917149210?text=Olá!%20Gostaria%20de%20agendar%20um%20Corte%20Infantil." class="service-btn" target="_blank"><i class="fab fa-whatsapp"></i> Agendar</a>
+        <a href="#" onclick="openWAModal('Olá! Gostaria de agendar um Corte Infantil.');return false;" class="service-btn"><i class="fab fa-whatsapp"></i> Agendar</a>
       </div>
       <div class="service-card fade-up">
         <div class="service-icon"><i class="fa fa-star"></i></div>
         <div class="service-name">Pigmentação</div>
         <div class="service-desc">Disfarça entradas e falhas na barba. Visual mais fechado, confiante e jovem.</div>
         <div class="service-price">R$ 35,00</div>
-        <a href="https://wa.me/5511917149210?text=Olá!%20Gostaria%20de%20agendar%20uma%20Pigmentação." class="service-btn" target="_blank"><i class="fab fa-whatsapp"></i> Agendar</a>
+        <a href="#" onclick="openWAModal('Olá! Gostaria de agendar uma Pigmentação.');return false;" class="service-btn"><i class="fab fa-whatsapp"></i> Agendar</a>
       </div>
       <div class="service-card fade-up">
         <div class="service-icon"><i class="fa fa-gem"></i></div>
         <div class="service-name">Black Diamond</div>
         <div class="service-desc">Corte + Barba + Sobrancelha + Selagem + Hidratação. Presença, status e autoridade.</div>
         <div class="service-price">R$ 260,00</div>
-        <a href="https://wa.me/5511917149210?text=Olá!%20Gostaria%20de%20agendar%20o%20combo%20Black%20Diamond%20Supremo." class="service-btn" target="_blank"><i class="fab fa-whatsapp"></i> Agendar</a>
+        <a href="#" onclick="openWAModal('Olá! Gostaria de agendar o combo Black Diamond Supremo.');return false;" class="service-btn"><i class="fab fa-whatsapp"></i> Agendar</a>
       </div>
     </div>
   </section>
@@ -1125,7 +1198,7 @@
       <div class="footer-col">
         <h4>Contato</h4>
         <ul>
-          <li><a href="https://wa.me/5511917149210" target="_blank"><i class="fab fa-whatsapp" style="color:var(--red);margin-right:8px"></i>WhatsApp</a></li>
+          <li><a href="#" onclick="openWAModal('Olá! Gostaria de mais informações.');return false;"><i class="fab fa-whatsapp" style="color:var(--red);margin-right:8px"></i>WhatsApp</a></li>
           <li><a href="#lojas"><i class="fa fa-map-marker-alt" style="color:var(--red);margin-right:8px"></i>Vila Flórida</a></li>
           <li><a href="#lojas"><i class="fa fa-map-marker-alt" style="color:var(--red);margin-right:8px"></i>Luisiana</a></li>
         </ul>
@@ -1136,6 +1209,36 @@
       <p>Qualidade que fala por você <span>&#x2665;</span></p>
     </div>
   </footer>
+
+  <!-- MODAL SELEÇÃO DE UNIDADE -->
+  <div class="wa-modal-overlay" id="waModalOverlay">
+    <div class="wa-modal">
+      <button class="wa-modal-close" id="waModalClose"><i class="fa fa-times"></i></button>
+      <div class="wa-modal-logo">
+        <img src="logobarbearia.png" alt="Vitão do Corte" />
+      </div>
+      <h3 class="wa-modal-title">Escolha a unidade</h3>
+      <p class="wa-modal-sub">Selecione a unidade mais próxima de você</p>
+      <div class="wa-modal-btns">
+        <a id="waModalFlorida" class="wa-modal-btn" target="_blank">
+          <div class="wa-modal-btn-icon"><i class="fab fa-whatsapp"></i></div>
+          <div class="wa-modal-btn-info">
+            <span>Vila Flórida</span>
+            <small>São Bernardo do Campo</small>
+          </div>
+          <i class="fa fa-chevron-right"></i>
+        </a>
+        <a id="waModalLuisiana" class="wa-modal-btn" target="_blank">
+          <div class="wa-modal-btn-icon"><i class="fab fa-whatsapp"></i></div>
+          <div class="wa-modal-btn-info">
+            <span>Luisiana</span>
+            <small>São Bernardo do Campo</small>
+          </div>
+          <i class="fa fa-chevron-right"></i>
+        </a>
+      </div>
+    </div>
+  </div>
 
   <!-- WHATSAPP FLOATING BUTTON -->
   <div class="whatsapp-float" id="waFloat">
@@ -1175,6 +1278,23 @@
     mobileClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
     document.querySelectorAll('.mobile-link, .mobile-menu .btn-primary').forEach(el => {
       el.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    });
+
+    // Modal seleção de unidade
+    const waModalOverlay = document.getElementById('waModalOverlay');
+    const waModalClose   = document.getElementById('waModalClose');
+    const waModalFlorida  = document.getElementById('waModalFlorida');
+    const waModalLuisiana = document.getElementById('waModalLuisiana');
+
+    function openWAModal(msg) {
+      const encoded = encodeURIComponent(msg);
+      waModalFlorida.href  = 'https://wa.me/5511953767534?text=' + encoded;
+      waModalLuisiana.href = 'https://wa.me/5511917149210?text=' + encoded;
+      waModalOverlay.classList.add('open');
+    }
+    waModalClose.addEventListener('click', () => waModalOverlay.classList.remove('open'));
+    waModalOverlay.addEventListener('click', (e) => {
+      if (e.target === waModalOverlay) waModalOverlay.classList.remove('open');
     });
 
     // WhatsApp float menu
