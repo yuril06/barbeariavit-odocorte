@@ -886,6 +886,122 @@
       .whatsapp-float { bottom: 20px; right: 20px; }
     }
 
+    /* ─── SECTION CTA ───────────────────────────────────────────── */
+    .section-cta {
+      margin-top: 56px;
+      display: flex; flex-direction: column; align-items: center;
+      gap: 20px; text-align: center;
+      padding: 48px 5vw;
+      background: var(--dark3);
+      border-top: 1px solid rgba(196,30,58,.2);
+    }
+    .section-cta p {
+      font-size: 15px; color: var(--gray); letter-spacing: .5px;
+    }
+    .section-cta p strong { color: var(--white); }
+    .section-cta-btns {
+      display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;
+    }
+    .btn-ab {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--red); color: var(--white);
+      padding: 15px 30px; border-radius: 2px;
+      font-size: 13px; font-weight: 600; letter-spacing: 2px;
+      text-transform: uppercase; border: none; cursor: pointer;
+      transition: background .25s, box-shadow .25s, transform .2s;
+    }
+    .btn-ab:hover {
+      background: var(--red-light);
+      box-shadow: 0 8px 30px var(--red-glow);
+      transform: translateY(-2px);
+    }
+    .btn-ab-outline {
+      display: inline-flex; align-items: center; gap: 10px;
+      border: 1px solid rgba(255,255,255,.15); color: var(--gray);
+      background: transparent;
+      padding: 15px 30px; border-radius: 2px;
+      font-size: 13px; font-weight: 500; letter-spacing: 2px;
+      text-transform: uppercase; cursor: pointer;
+      transition: border-color .25s, color .25s, transform .2s;
+    }
+    .btn-ab-outline:hover {
+      border-color: var(--red); color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    /* ─── APPBARBER MODAL ────────────────────────────────────────── */
+    .ab-modal-overlay {
+      position: fixed; inset: 0; z-index: 2000;
+      background: rgba(0,0,0,.78);
+      backdrop-filter: blur(6px);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity .3s;
+      padding: 20px;
+    }
+    .ab-modal-overlay.open { opacity: 1; pointer-events: all; }
+    .ab-modal {
+      background: var(--dark2);
+      border: 1px solid rgba(196,30,58,.3);
+      border-radius: 12px;
+      padding: 40px 36px;
+      width: 100%; max-width: 420px;
+      position: relative;
+      transform: translateY(20px);
+      transition: transform .3s;
+      text-align: center;
+    }
+    .ab-modal-overlay.open .ab-modal { transform: translateY(0); }
+    .ab-modal-close {
+      position: absolute; top: 16px; right: 16px;
+      background: var(--dark3); border: none; cursor: pointer;
+      width: 32px; height: 32px; border-radius: 50%;
+      color: var(--gray); font-size: 14px;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s, color .2s;
+    }
+    .ab-modal-close:hover { background: var(--red); color: var(--white); }
+    .ab-modal-logo img {
+      width: 72px; height: 72px; border-radius: 50%;
+      object-fit: cover; margin: 0 auto 20px;
+    }
+    .ab-modal-title {
+      font-family: var(--font-display);
+      font-size: 26px; letter-spacing: 2px;
+      margin-bottom: 6px;
+    }
+    .ab-modal-sub {
+      font-size: 13px; color: var(--gray); margin-bottom: 28px;
+    }
+    .ab-modal-btns { display: flex; flex-direction: column; gap: 12px; }
+    .ab-modal-btn {
+      display: flex; align-items: center; gap: 14px;
+      background: var(--dark3);
+      border: 1px solid rgba(196,30,58,.25);
+      border-radius: 8px; padding: 16px 18px;
+      text-align: left; text-decoration: none;
+      transition: background .2s, border-color .2s, transform .2s;
+    }
+    .ab-modal-btn:hover {
+      background: rgba(196,30,58,.1);
+      border-color: var(--red);
+      transform: translateX(4px);
+    }
+    .ab-modal-btn-icon {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--red); flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; color: var(--white);
+    }
+    .ab-modal-btn-info { flex: 1; }
+    .ab-modal-btn-info span {
+      display: block; font-weight: 600; font-size: 15px; color: var(--white);
+    }
+    .ab-modal-btn-info small {
+      font-size: 11px; color: var(--gray2);
+    }
+    .ab-modal-btn .fa-chevron-right { color: var(--red); font-size: 12px; }
+
     /* ─── FADE IN ANIMATION ──────────────────────────────────────── */
     .fade-up {
       opacity: 0; transform: translateY(32px);
@@ -905,7 +1021,7 @@
       <li><a href="#servicos">Serviços</a></li>
       <li><a href="#galeria">Galeria</a></li>
       <li><a href="#produtos">Planos</a></li>
-      <li><a href="#lojas">Lojas</a></li>
+      <li><a href="#lojas">Unidades</a></li>
     </ul>
     <a href="#lojas" class="nav-cta">Agendar Agora</a>
     <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
@@ -918,8 +1034,8 @@
     <button class="mobile-close" id="mobileClose"><i class="fa fa-times"></i></button>
     <a href="#servicos" class="mobile-link">Serviços</a>
     <a href="#galeria" class="mobile-link">Galeria</a>
-    <a href="#produtos" class="mobile-link">Produtos</a>
-    <a href="#lojas" class="mobile-link">Lojas</a>
+    <a href="#produtos" class="mobile-link">Planos</a>
+    <a href="#lojas" class="mobile-link">Unidades</a>
     <a href="#lojas" class="btn-primary">Agendar</a>
   </div>
 
@@ -1017,6 +1133,17 @@
         <a href="#" onclick="openWAModal('Olá! Gostaria de agendar o combo Black Diamond Supremo.');return false;" class="service-btn"><i class="fab fa-whatsapp"></i> Agendar</a>
       </div>
     </div>
+    <div class="section-cta fade-up">
+      <p>Pronto para agendar? <strong>Escolha a unidade e garanta seu horário</strong></p>
+      <div class="section-cta-btns">
+        <button onclick="openABModal()" class="btn-ab">
+          <i class="fa fa-calendar-check"></i> Agendar pelo AppBarber
+        </button>
+        <button onclick="openWAModal('Olá! Gostaria de agendar um serviço.')" class="btn-ab-outline">
+          <i class="fab fa-whatsapp"></i> Ou via WhatsApp
+        </button>
+      </div>
+    </div>
   </section>
 
   <!-- BARBER POLE DIVIDER -->
@@ -1111,12 +1238,23 @@
       </div>
 
     </div>
+    <div class="section-cta fade-up">
+      <p>Quer assinar um plano? <strong>Fale com a gente e comece hoje</strong></p>
+      <div class="section-cta-btns">
+        <button onclick="openABModal()" class="btn-ab">
+          <i class="fa fa-calendar-check"></i> Agendar pelo AppBarber
+        </button>
+        <button onclick="openWAModal('Olá! Tenho interesse em assinar um dos planos da Vitão do Corte.')" class="btn-ab-outline">
+          <i class="fab fa-whatsapp"></i> Assinar via WhatsApp
+        </button>
+      </div>
+    </div>
   </section>
 
   <!-- BARBER POLE DIVIDER -->
   <div class="pole-divider"></div>
 
-  <!-- LOJAS -->
+  <!-- UNIDADES -->
   <section id="lojas">
     <div class="section-header fade-up">
       <div class="section-tag">Onde nos encontrar</div>
@@ -1225,7 +1363,7 @@
           <li><a href="#servicos">Serviços</a></li>
           <li><a href="#galeria">Galeria</a></li>
           <li><a href="#produtos">Planos</a></li>
-          <li><a href="#lojas">Nossas Lojas</a></li>
+          <li><a href="#lojas">Nossas Unidades</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -1251,6 +1389,36 @@
       <p>Qualidade que fala por você <span>&#x2665;</span></p>
     </div>
   </footer>
+
+  <!-- MODAL APPBARBER - SELEÇÃO DE UNIDADE -->
+  <div class="ab-modal-overlay" id="abModalOverlay">
+    <div class="ab-modal">
+      <button class="ab-modal-close" id="abModalClose"><i class="fa fa-times"></i></button>
+      <div class="ab-modal-logo">
+        <img src="logobarbearia.png" alt="Vitão do Corte" />
+      </div>
+      <h3 class="ab-modal-title">Escolha a unidade</h3>
+      <p class="ab-modal-sub">Selecione e agende direto pelo AppBarber</p>
+      <div class="ab-modal-btns">
+        <a href="https://sites.appbarber.com.br/barbeariavitaod-a4rh" class="ab-modal-btn" target="_blank">
+          <div class="ab-modal-btn-icon"><i class="fa fa-calendar-check"></i></div>
+          <div class="ab-modal-btn-info">
+            <span>Vila Flórida</span>
+            <small>São Bernardo do Campo</small>
+          </div>
+          <i class="fa fa-chevron-right"></i>
+        </a>
+        <a href="https://sites.appbarber.com.br/barbeariavitaod-5az3" class="ab-modal-btn" target="_blank">
+          <div class="ab-modal-btn-icon"><i class="fa fa-calendar-check"></i></div>
+          <div class="ab-modal-btn-info">
+            <span>Luisiana</span>
+            <small>São Bernardo do Campo</small>
+          </div>
+          <i class="fa fa-chevron-right"></i>
+        </a>
+      </div>
+    </div>
+  </div>
 
   <!-- MODAL SELEÇÃO DE UNIDADE -->
   <div class="wa-modal-overlay" id="waModalOverlay">
@@ -1337,6 +1505,15 @@
     waModalClose.addEventListener('click', () => waModalOverlay.classList.remove('open'));
     waModalOverlay.addEventListener('click', (e) => {
       if (e.target === waModalOverlay) waModalOverlay.classList.remove('open');
+    });
+
+    // AppBarber modal
+    const abModalOverlay = document.getElementById('abModalOverlay');
+    const abModalClose   = document.getElementById('abModalClose');
+    function openABModal() { abModalOverlay.classList.add('open'); }
+    abModalClose.addEventListener('click', () => abModalOverlay.classList.remove('open'));
+    abModalOverlay.addEventListener('click', (e) => {
+      if (e.target === abModalOverlay) abModalOverlay.classList.remove('open');
     });
 
     // WhatsApp float menu
