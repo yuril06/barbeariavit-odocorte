@@ -395,6 +395,21 @@
       font-size: 20px; color: var(--red);
       margin-top: auto;
     }
+    .service-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-top: 16px;
+      background: transparent;
+      border: 1px solid rgba(37,211,102,.4);
+      color: #25d366;
+      padding: 8px 16px; border-radius: 2px;
+      font-size: 12px; font-weight: 600; letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: background .25s, border-color .25s, color .25s;
+    }
+    .service-btn:hover {
+      background: rgba(37,211,102,.1);
+      border-color: #25d366;
+    }
 
     /* ─── ABOUT ──────────────────────────────────────────────────── */
     #sobre {
@@ -868,39 +883,45 @@
     <div class="services-grid">
       <div class="service-card fade-up">
         <div class="service-icon"><i class="fa fa-scissors"></i></div>
-        <div class="service-name">Corte Clássico</div>
+        <div class="service-name">Corte</div>
         <div class="service-desc">Na tesoura ou na máquina, o corte certo pro seu estilo com acabamento caprichado.</div>
         <div class="service-price">A consultar</div>
+        <a href="https://wa.me/5511917149210?text=Olá!%20Gostaria%20de%20agendar%20um%20Corte." class="service-btn" target="_blank"><i class="fab fa-whatsapp"></i> Agendar</a>
       </div>
       <div class="service-card fade-up">
         <div class="service-icon"><i class="fa fa-user-tie"></i></div>
-        <div class="service-name">Barba Completa</div>
+        <div class="service-name">Barba</div>
         <div class="service-desc">Aparagem, alinhamento e modelagem. Barba no ponto com navalha e acabamento impecável.</div>
-        <div class="service-price">A consultar</div>
+        <div class="service-price">R$ 35,00</div>
+        <a href="https://wa.me/5511917149210?text=Olá!%20Gostaria%20de%20agendar%20uma%20Barba." class="service-btn" target="_blank"><i class="fab fa-whatsapp"></i> Agendar</a>
       </div>
       <div class="service-card fade-up">
         <div class="service-icon"><i class="fa fa-fire"></i></div>
         <div class="service-name">Corte + Barba</div>
         <div class="service-desc">O combo perfeito. Corte e barba numa visita só — sai renovado do jeito que gosta.</div>
-        <div class="service-price">A consultar</div>
+        <div class="service-price">R$ 80,00</div>
+        <a href="https://wa.me/5511917149210?text=Olá!%20Gostaria%20de%20agendar%20o%20Combo%20Corte%20%2B%20Barba." class="service-btn" target="_blank"><i class="fab fa-whatsapp"></i> Agendar</a>
       </div>
       <div class="service-card fade-up">
-        <div class="service-icon"><i class="fa fa-spa"></i></div>
-        <div class="service-name">Sobrancelha</div>
-        <div class="service-desc">Detalhe que faz diferença. Sobrancelha no ponto certo pra fechar o visual.</div>
-        <div class="service-price">A consultar</div>
+        <div class="service-icon"><i class="fa fa-child"></i></div>
+        <div class="service-name">Corte Infantil</div>
+        <div class="service-desc">O corte ideal para seu filho, no tempo dele e com a paciência que ele merece.</div>
+        <div class="service-price">R$ 45,00</div>
+        <a href="https://wa.me/5511917149210?text=Olá!%20Gostaria%20de%20agendar%20um%20Corte%20Infantil." class="service-btn" target="_blank"><i class="fab fa-whatsapp"></i> Agendar</a>
       </div>
       <div class="service-card fade-up">
         <div class="service-icon"><i class="fa fa-star"></i></div>
         <div class="service-name">Pigmentação</div>
-        <div class="service-desc">Técnica que disfarça entradas e falhas na barba. Visual mais fechado e confiante.</div>
-        <div class="service-price">A consultar</div>
+        <div class="service-desc">Disfarça entradas e falhas na barba. Visual mais fechado, confiante e jovem.</div>
+        <div class="service-price">R$ 35,00</div>
+        <a href="https://wa.me/5511917149210?text=Olá!%20Gostaria%20de%20agendar%20uma%20Pigmentação." class="service-btn" target="_blank"><i class="fab fa-whatsapp"></i> Agendar</a>
       </div>
       <div class="service-card fade-up">
         <div class="service-icon"><i class="fa fa-gem"></i></div>
-        <div class="service-name">VIP Experience</div>
-        <div class="service-desc">Corte, barba e sobrancelha completos. A experiência Vitão do Corte no máximo.</div>
-        <div class="service-price">A consultar</div>
+        <div class="service-name">Black Diamond</div>
+        <div class="service-desc">Corte + Barba + Sobrancelha + Selagem + Hidratação. Presença, status e autoridade.</div>
+        <div class="service-price">R$ 260,00</div>
+        <a href="https://wa.me/5511917149210?text=Olá!%20Gostaria%20de%20agendar%20o%20combo%20Black%20Diamond%20Supremo." class="service-btn" target="_blank"><i class="fab fa-whatsapp"></i> Agendar</a>
       </div>
     </div>
   </section>
@@ -1049,17 +1070,17 @@
         <div class="loja-name">VITÃO DO CORTE</div>
         <div class="loja-address">
           <i class="fa fa-map-marker-alt"></i>
-          <span>
-            <!-- Substitua pelo endereço real da unidade Luisiana -->
-            Luisiana — Adicione o endereço aqui
-          </span>
+          <span>Rua Luisiana, 980 — Taboão<br>São Bernardo do Campo / SP</span>
         </div>
         <div class="loja-hours">
           <div class="loja-hour-row">
-            <span>Segunda a Sexta</span><span>09:00 – 20:00</span>
+            <span>Segunda e Terça</span><span>09:00 – 19:00</span>
           </div>
           <div class="loja-hour-row">
-            <span>Sábado</span><span>08:00 – 18:00</span>
+            <span>Quarta e Quinta</span><span>09:00 – 20:00</span>
+          </div>
+          <div class="loja-hour-row">
+            <span>Sexta e Sábado</span><span>08:00 – 20:00</span>
           </div>
           <div class="loja-hour-row">
             <span>Domingo</span><span>Fechado</span>
