@@ -241,70 +241,32 @@
       50% { transform: translateX(-50%) translateY(6px); }
     }
 
-    /* ─── PROMO DESTAQUE ─────────────────────────────────────────── */
-    #promo {
-      padding: 100px 5vw;
-      background: var(--dark);
+    /* ─── PROMO FAIXA ────────────────────────────────────────────── */
+    .promo-faixa {
+      background: var(--red);
+      padding: 16px 5vw;
+    }
+    .promo-faixa-content {
       display: flex; align-items: center; justify-content: center;
-      text-align: center;
-      overflow: hidden;
+      gap: 24px; flex-wrap: wrap;
     }
-    .promo-bg {
-      position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse 70% 80% at 50% 50%, rgba(196,30,58,.15) 0%, transparent 70%);
+    .promo-faixa-text {
+      font-size: 15px; color: var(--white);
+      letter-spacing: .5px;
     }
-    .promo-content {
-      position: relative; z-index: 2;
-      display: flex; flex-direction: column;
-      align-items: center; gap: 12px;
-      max-width: 640px;
+    .promo-faixa-text i { margin-right: 8px; font-size: 12px; }
+    .promo-faixa-text strong { font-weight: 700; }
+    .promo-faixa-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--white); color: var(--red);
+      padding: 9px 20px; border-radius: 50px;
+      font-size: 13px; font-weight: 700; letter-spacing: .5px;
+      white-space: nowrap;
+      transition: background .2s, transform .2s;
     }
-    .promo-eyebrow {
-      font-size: 12px; letter-spacing: 5px;
-      text-transform: uppercase; color: var(--red);
-      font-weight: 700; display: flex; align-items: center; gap: 10px;
-    }
-    .promo-eyebrow i { font-size: 10px; }
-    .promo-price-wrap {
-      display: flex; align-items: flex-start; justify-content: center;
-      line-height: 1;
-      margin: 8px 0 0;
-    }
-    .promo-currency {
-      font-family: var(--font-display);
-      font-size: clamp(28px, 5vw, 48px);
-      color: var(--white);
-      margin-top: 12px; margin-right: 4px;
-    }
-    .promo-value {
-      font-family: var(--font-display);
-      font-size: clamp(100px, 20vw, 180px);
-      color: var(--white);
-      letter-spacing: -4px;
-      line-height: .9;
-    }
-    .promo-cents {
-      font-family: var(--font-display);
-      font-size: clamp(28px, 5vw, 48px);
-      color: var(--gray);
-      margin-top: 16px;
-    }
-    .promo-divider-text {
-      font-size: 13px; letter-spacing: 6px;
-      color: var(--gray2); text-transform: uppercase;
-      display: flex; align-items: center; gap: 12px;
-    }
-    .promo-destaque {
-      font-family: var(--font-display);
-      font-size: clamp(48px, 10vw, 96px);
-      letter-spacing: 6px; line-height: 1;
-      color: var(--red);
-    }
-    .promo-destaque span { color: var(--white); }
-    .promo-sub {
-      font-size: 15px; color: var(--gray);
-      line-height: 1.8; margin-top: 4px;
+    .promo-faixa-btn:hover {
+      background: rgba(255,255,255,.88);
+      transform: translateY(-1px);
     }
 
     /* ─── BARBER POLE DIVIDER ────────────────────────────────────── */
@@ -874,24 +836,15 @@
     </div>
   </section>
 
-  <!-- PROMO DESTAQUE -->
-  <section id="promo">
-    <div class="promo-bg"></div>
-    <div class="promo-content fade-up">
-      <div class="promo-eyebrow"><i class="fa fa-star"></i> OFERTA ESPECIAL <i class="fa fa-star"></i></div>
-      <div class="promo-price-wrap">
-        <div class="promo-currency">R$</div>
-        <div class="promo-value">30</div>
-        <div class="promo-cents">,00</div>
-      </div>
-      <div class="promo-divider-text">— O PRIMEIRO —</div>
-      <div class="promo-destaque">CORTE<span> NA BARBEARIA!</span></div>
-      <p class="promo-sub">Qualidade que fala por você.<br>Marca aquele amigo que ainda não conhece a Vitão do Corte!</p>
-      <a href="https://wa.me/5511917149210?text=Olá!%20Vi%20a%20oferta%20do%20primeiro%20corte%20por%20R%24%2030%2C00%20e%20gostaria%20de%20agendar!" class="btn-primary" style="margin-top:8px" target="_blank">
-        <i class="fab fa-whatsapp"></i> Agendar pelo WhatsApp
+  <!-- PROMO FAIXA -->
+  <div class="promo-faixa">
+    <div class="promo-faixa-content">
+      <span class="promo-faixa-text"><i class="fa fa-star"></i> Primeiro corte por apenas <strong>R$ 30,00</strong> — Qualidade que fala por você!</span>
+      <a href="https://wa.me/5511917149210?text=Olá!%20Vi%20a%20oferta%20do%20primeiro%20corte%20por%20R%24%2030%2C00%20e%20gostaria%20de%20agendar!" class="promo-faixa-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i> Agendar agora
       </a>
     </div>
-  </section>
+  </div>
 
   <!-- BARBER POLE DIVIDER -->
   <div class="pole-divider"></div>
