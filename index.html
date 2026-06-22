@@ -591,8 +591,8 @@
     }
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: 260px 260px;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 340px 340px;
       gap: 3px;
       margin-top: 0;
     }
@@ -602,7 +602,6 @@
       display: flex; align-items: center; justify-content: center;
     }
     .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
-    .gallery-item:nth-child(4) { grid-column: span 2; }
     .gallery-item img {
       width: 100%; height: 100%; object-fit: cover;
       transition: transform .5s;
@@ -920,11 +919,12 @@
       <div class="section-line"></div>
     </div>
     <div class="gallery-grid fade-up">
-      <div class="gallery-item"><div class="gallery-placeholder"><i class="fa fa-image"></i><span>Foto 1</span></div></div>
-      <div class="gallery-item"><div class="gallery-placeholder"><i class="fa fa-image"></i><span>Foto 2</span></div></div>
-      <div class="gallery-item"><div class="gallery-placeholder"><i class="fa fa-image"></i><span>Foto 3</span></div></div>
-      <div class="gallery-item"><div class="gallery-placeholder"><i class="fa fa-image"></i><span>Foto 4</span></div></div>
-      <div class="gallery-item"><div class="gallery-placeholder"><i class="fa fa-image"></i><span>Foto 5</span></div></div>
+      <div class="gallery-item"><img src="galeria1.png" alt="Corte Vitão do Corte" /></div>
+      <div class="gallery-item"><img src="galeria2.png" alt="Corte Vitão do Corte" /></div>
+      <div class="gallery-item"><img src="galeria3.png" alt="Corte Vitão do Corte" /></div>
+      <div class="gallery-item"><img src="galeria4.png" alt="Corte Vitão do Corte" /></div>
+      <div class="gallery-item"><img src="galeria5.png" alt="Corte Vitão do Corte" /></div>
+      <div class="gallery-item"><img src="galeria6.png" alt="Corte Vitão do Corte" /></div>
     </div>
   </section>
 
