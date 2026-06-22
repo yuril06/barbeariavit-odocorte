@@ -551,47 +551,80 @@
     }
     .btn-maps:hover { border-color: var(--red); color: var(--white); }
 
-    /* ─── PRODUTOS ───────────────────────────────────────────────── */
+    /* ─── PLANOS ─────────────────────────────────────────────────── */
     #produtos {
       padding: 120px 5vw;
-      background: var(--black);
+      background: var(--dark);
     }
-    .produtos-grid {
+    .planos-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 3px;
+      align-items: stretch;
     }
-    .produto-card {
+    .plano-card {
       background: var(--dark2);
+      padding: 40px 32px;
       display: flex; flex-direction: column;
-      overflow: hidden;
+      gap: 12px; position: relative;
       transition: background .3s;
-      position: relative;
     }
-    .produto-card::before {
-      content: '';
-      position: absolute; bottom: 0; left: 0;
-      width: 100%; height: 3px;
-      background: var(--red);
-      transform: scaleX(0); transform-origin: left;
-      transition: transform .4s;
+    .plano-card:hover { background: var(--dark3); }
+    .plano-destaque {
+      background: var(--red) !important;
+      border: none;
     }
-    .produto-card:hover { background: var(--dark3); }
-    .produto-card:hover::before { transform: scaleX(1); }
-    .produto-img {
-      height: 220px;
-      background: var(--dark3);
+    .plano-destaque:hover { background: var(--red-light) !important; }
+    .plano-badge {
+      position: absolute; top: -1px; left: 50%; transform: translateX(-50%);
+      background: var(--white); color: var(--red);
+      font-size: 10px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; padding: 5px 16px;
+      border-radius: 0 0 8px 8px;
+    }
+    .plano-icon {
+      font-size: 28px; color: var(--white);
+      opacity: .6; margin-bottom: 4px;
+    }
+    .plano-destaque .plano-icon { opacity: 1; }
+    .plano-name {
+      font-family: var(--font-display);
+      font-size: 28px; letter-spacing: 2px; color: var(--white);
+    }
+    .plano-includes {
+      font-size: 12px; letter-spacing: 1px;
+      color: rgba(255,255,255,.6); text-transform: uppercase;
+    }
+    .plano-destaque .plano-includes { color: rgba(255,255,255,.85); }
+    .plano-price {
+      font-family: var(--font-display);
+      font-size: 56px; line-height: 1; color: var(--white);
+      margin: 8px 0;
+    }
+    .plano-price span { font-size: 22px; vertical-align: top; margin-top: 10px; display: inline-block; margin-right: 2px; }
+    .plano-items {
+      list-style: none; display: flex; flex-direction: column;
+      gap: 8px; margin: 4px 0 16px; flex: 1;
+    }
+    .plano-items li {
+      font-size: 13px; color: rgba(255,255,255,.75);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .plano-items li i { color: var(--white); font-size: 11px; opacity: .8; }
+    .plano-destaque .plano-items li { color: rgba(255,255,255,.9); }
+    .plano-btn {
       display: flex; align-items: center; justify-content: center;
-      overflow: hidden;
+      padding: 13px; border-radius: 2px;
+      font-size: 12px; font-weight: 600; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-top: auto;
+      border: 1px solid rgba(255,255,255,.25); color: var(--white);
+      transition: background .25s, border-color .25s;
     }
-    .produto-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
-    .produto-card:hover .produto-img img { transform: scale(1.05); }
-    .produto-placeholder { display: flex; flex-direction: column; align-items: center; gap: 10px; color: var(--dark); }
-    .produto-placeholder i { font-size: 40px; }
-    .produto-info { padding: 24px 28px 28px; display: flex; flex-direction: column; gap: 8px; }
-    .produto-name { font-family: var(--font-display); font-size: 20px; letter-spacing: 1px; }
-    .produto-desc { font-size: 13px; color: var(--gray); line-height: 1.6; }
-    .produto-price { font-family: var(--font-display); font-size: 22px; color: var(--red); margin-top: 8px; }
+    .plano-btn:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.5); }
+    .plano-destaque .plano-btn {
+      background: var(--white); color: var(--red); border-color: var(--white);
+    }
+    .plano-destaque .plano-btn:hover { background: rgba(255,255,255,.88); }
 
     /* ─── GALLERY (PLACEHOLDER) ──────────────────────────────────── */
     #galeria {
@@ -871,7 +904,7 @@
     <ul class="nav-links">
       <li><a href="#servicos">Serviços</a></li>
       <li><a href="#galeria">Galeria</a></li>
-      <li><a href="#produtos">Produtos</a></li>
+      <li><a href="#produtos">Planos</a></li>
       <li><a href="#lojas">Lojas</a></li>
     </ul>
     <a href="#lojas" class="nav-cta">Agendar Agora</a>
@@ -1012,65 +1045,71 @@
   <!-- BARBER POLE DIVIDER -->
   <div class="pole-divider"></div>
 
-  <!-- PRODUTOS -->
+  <!-- PLANOS -->
   <section id="produtos">
     <div class="section-header fade-up">
-      <div class="section-tag">Loja</div>
+      <div class="section-tag">Assine e economize</div>
       <h2 class="section-title">
         <span class="line">Nossos</span>
-        <span class="line italic">Produtos</span>
+        <span class="line italic">Planos</span>
       </h2>
       <div class="section-line"></div>
     </div>
-    <div class="produtos-grid">
-      <div class="produto-card fade-up">
-        <div class="produto-img"><div class="produto-placeholder"><i class="fa fa-box-open"></i></div></div>
-        <div class="produto-info">
-          <div class="produto-name">Pomada Modeladora</div>
-          <div class="produto-desc">Fixação forte com acabamento natural. Ideal para todos os tipos de cabelo.</div>
-          <div class="produto-price">R$ --</div>
-        </div>
+    <div class="planos-grid">
+
+      <div class="plano-card fade-up">
+        <div class="plano-icon"><i class="fa fa-cut"></i></div>
+        <div class="plano-name">Blade Plus</div>
+        <div class="plano-includes">Corte + Perfil</div>
+        <div class="plano-price"><span>R$</span> 120</div>
+        <ul class="plano-items">
+          <li><i class="fa fa-check"></i> Corte mensal</li>
+          <li><i class="fa fa-check"></i> Perfil incluso</li>
+          <li><i class="fa fa-check"></i> Agendamento prioritário</li>
+        </ul>
+        <a href="#" onclick="openWAModal('Olá! Tenho interesse no Plano Blade Plus (Corte + Perfil) por R$ 120.');return false;" class="plano-btn">Quero esse plano</a>
       </div>
-      <div class="produto-card fade-up">
-        <div class="produto-img"><div class="produto-placeholder"><i class="fa fa-box-open"></i></div></div>
-        <div class="produto-info">
-          <div class="produto-name">Óleo para Barba</div>
-          <div class="produto-desc">Hidrata, amacia e dá brilho à barba. Fragrância exclusiva.</div>
-          <div class="produto-price">R$ --</div>
-        </div>
+
+      <div class="plano-card fade-up">
+        <div class="plano-icon"><i class="fa fa-star"></i></div>
+        <div class="plano-name">Corte Fixo</div>
+        <div class="plano-includes">4 Cortes no mês</div>
+        <div class="plano-price"><span>R$</span> 150</div>
+        <ul class="plano-items">
+          <li><i class="fa fa-check"></i> 4 cortes mensais</li>
+          <li><i class="fa fa-check"></i> Visual sempre alinhado</li>
+          <li><i class="fa fa-check"></i> Agendamento prioritário</li>
+        </ul>
+        <a href="#" onclick="openWAModal('Olá! Tenho interesse no Plano Vitão Corte Fixo (4 cortes) por R$ 150.');return false;" class="plano-btn">Quero esse plano</a>
       </div>
-      <div class="produto-card fade-up">
-        <div class="produto-img"><div class="produto-placeholder"><i class="fa fa-box-open"></i></div></div>
-        <div class="produto-info">
-          <div class="produto-name">Shampoo para Barba</div>
-          <div class="produto-desc">Limpeza profunda sem ressecar. Fórmula especial para barba e pele.</div>
-          <div class="produto-price">R$ --</div>
-        </div>
+
+      <div class="plano-card plano-destaque fade-up">
+        <div class="plano-badge">Mais popular</div>
+        <div class="plano-icon"><i class="fa fa-fire"></i></div>
+        <div class="plano-name">Vitão Prime</div>
+        <div class="plano-includes">Corte + Barba</div>
+        <div class="plano-price"><span>R$</span> 220</div>
+        <ul class="plano-items">
+          <li><i class="fa fa-check"></i> Corte mensal</li>
+          <li><i class="fa fa-check"></i> Barba inclusa</li>
+          <li><i class="fa fa-check"></i> Agendamento prioritário</li>
+        </ul>
+        <a href="#" onclick="openWAModal('Olá! Tenho interesse no Plano Vitão Prime (Corte + Barba) por R$ 220.');return false;" class="plano-btn">Quero esse plano</a>
       </div>
-      <div class="produto-card fade-up">
-        <div class="produto-img"><div class="produto-placeholder"><i class="fa fa-box-open"></i></div></div>
-        <div class="produto-info">
-          <div class="produto-name">Balm para Barba</div>
-          <div class="produto-desc">Condiciona e modela a barba deixando-a macia e no lugar.</div>
-          <div class="produto-price">R$ --</div>
-        </div>
+
+      <div class="plano-card fade-up">
+        <div class="plano-icon"><i class="fa fa-gem"></i></div>
+        <div class="plano-name">Vitão Gold</div>
+        <div class="plano-includes">Corte + Barba + Sobrancelha</div>
+        <div class="plano-price"><span>R$</span> 240</div>
+        <ul class="plano-items">
+          <li><i class="fa fa-check"></i> Corte mensal</li>
+          <li><i class="fa fa-check"></i> Barba inclusa</li>
+          <li><i class="fa fa-check"></i> Sobrancelha inclusa</li>
+        </ul>
+        <a href="#" onclick="openWAModal('Olá! Tenho interesse no Plano Vitão Gold (Corte + Barba + Sobrancelha) por R$ 240.');return false;" class="plano-btn">Quero esse plano</a>
       </div>
-      <div class="produto-card fade-up">
-        <div class="produto-img"><div class="produto-placeholder"><i class="fa fa-box-open"></i></div></div>
-        <div class="produto-info">
-          <div class="produto-name">Cera Capilar</div>
-          <div class="produto-desc">Textura leve com fixação média. Perfeito para looks modernos.</div>
-          <div class="produto-price">R$ --</div>
-        </div>
-      </div>
-      <div class="produto-card fade-up">
-        <div class="produto-img"><div class="produto-placeholder"><i class="fa fa-box-open"></i></div></div>
-        <div class="produto-info">
-          <div class="produto-name">Loção Pós-Barba</div>
-          <div class="produto-desc">Acalma a pele após o barbear e previne irritações.</div>
-          <div class="produto-price">R$ --</div>
-        </div>
-      </div>
+
     </div>
   </section>
 
@@ -1182,7 +1221,7 @@
         <ul>
           <li><a href="#servicos">Serviços</a></li>
           <li><a href="#galeria">Galeria</a></li>
-          <li><a href="#produtos">Produtos</a></li>
+          <li><a href="#produtos">Planos</a></li>
           <li><a href="#lojas">Nossas Lojas</a></li>
         </ul>
       </div>
