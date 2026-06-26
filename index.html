@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Barbearia Vitão do Corte</title>
+  <title>Luis do Corte</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -122,87 +122,104 @@
     /* ─── HERO ───────────────────────────────────────────────────── */
     #hero {
       min-height: 100vh;
-      display: flex; align-items: center;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       background: var(--black);
       overflow: hidden;
+      position: relative;
     }
-    .hero-bg {
-      position: absolute; inset: 0;
-      background-image: url('HERO NAVALHA.png');
-      background-size: cover;
-      background-position: center center;
-      background-repeat: no-repeat;
+    .hero-left {
+      position: relative; z-index: 2;
+      display: flex; flex-direction: column;
+      justify-content: center;
+      padding: 120px 6vw 80px 7vw;
     }
-    .hero-bg::after {
+    .hero-left::after {
       content: '';
       position: absolute; inset: 0;
-      background:
-        linear-gradient(to bottom, rgba(8,8,8,.75) 0%, rgba(8,8,8,.55) 50%, rgba(8,8,8,.85) 100%),
-        radial-gradient(ellipse 60% 60% at 50% 50%, rgba(196,30,58,.18) 0%, transparent 70%);
+      background: linear-gradient(to right, var(--black) 70%, transparent 100%);
+      pointer-events: none; z-index: -1;
     }
-    .hero-lines {
-      position: absolute; inset: 0; overflow: hidden; opacity: .08;
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 11px; letter-spacing: 4px;
+      text-transform: uppercase; color: var(--red);
+      font-weight: 600; margin-bottom: 20px;
     }
-    .hero-lines::before {
+    .hero-tag::before {
+      content: ''; width: 32px; height: 2px; background: var(--red);
+    }
+    .hero-name {
+      font-family: var(--font-display);
+      font-size: clamp(52px, 7vw, 96px);
+      letter-spacing: 4px; line-height: .95;
+      color: var(--white); margin-bottom: 8px;
+    }
+    .hero-name .red { color: var(--red); }
+    .hero-heading {
+      font-family: var(--font-serif);
+      font-size: clamp(16px, 2vw, 22px);
+      font-style: italic; color: var(--gray);
+      letter-spacing: 1px; margin-bottom: 36px;
+      font-weight: 400;
+    }
+    .hero-sub {
+      font-size: 14px; color: var(--gray2);
+      line-height: 1.8; margin-bottom: 48px;
+      max-width: 380px;
+    }
+    .hero-btns {
+      display: flex; flex-direction: column;
+      gap: 12px; max-width: 360px;
+    }
+    .hero-btn {
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+      background: var(--red);
+      border: none;
+      color: var(--white);
+      padding: 18px 32px; border-radius: 2px;
+      font-size: 13px; font-weight: 600; letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: background .25s, transform .2s, box-shadow .25s;
+    }
+    .hero-btn:hover {
+      background: var(--red-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px var(--red-glow);
+    }
+    .hero-btn-wa {
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,.15);
+      color: var(--gray);
+      padding: 16px 32px; border-radius: 2px;
+      font-size: 13px; font-weight: 500; letter-spacing: 2px;
+      text-transform: uppercase; cursor: pointer;
+      transition: border-color .25s, color .25s;
+    }
+    .hero-btn-wa:hover { border-color: #25d366; color: #25d366; }
+    .hero-right {
+      position: relative; overflow: hidden;
+    }
+    .hero-photo {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      display: block;
+    }
+    .hero-right::before {
       content: '';
-      position: absolute; top: -50%; left: 40%;
-      width: 1px; height: 200%;
-      background: linear-gradient(to bottom, transparent, var(--red), transparent);
-      animation: linePulse 4s ease-in-out infinite;
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(to right, var(--black) 0%, transparent 30%),
+                  linear-gradient(to top, rgba(8,8,8,.7) 0%, transparent 40%);
     }
-    .hero-lines::after {
+    .hero-right::after {
       content: '';
-      position: absolute; top: -50%; left: 60%;
-      width: 1px; height: 200%;
-      background: linear-gradient(to bottom, transparent, var(--red) 50%, transparent);
-      animation: linePulse 4s ease-in-out infinite 1s;
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 4px; background: var(--red); z-index: 2;
     }
     @keyframes linePulse {
       0%,100% { opacity: .3; } 50% { opacity: 1; }
     }
-    .hero-center {
-      position: relative; z-index: 2;
-      display: flex; flex-direction: column; align-items: center;
-      text-align: center; padding: 0 5vw; padding-top: 72px;
-      max-width: 640px; width: 100%;
-    }
-    .hero-logo {
-      width: 140px; height: 140px;
-      border-radius: 50%; object-fit: cover;
-      margin-bottom: 32px;
-    }
-    .hero-heading {
-      font-family: var(--font-display);
-      font-size: clamp(28px, 4vw, 48px);
-      letter-spacing: 2px; line-height: 1.15;
-      color: var(--white); margin-bottom: 16px;
-    }
-    .hero-sub {
-      font-size: 15px; color: var(--gray);
-      line-height: 1.7; margin-bottom: 48px;
-    }
-    .hero-btns {
-      display: flex; flex-direction: column;
-      gap: 14px; width: 100%; max-width: 420px;
-    }
-    .hero-btn {
-      display: flex; align-items: center; justify-content: center; gap: 12px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.15);
-      color: var(--white);
-      padding: 18px 32px; border-radius: 50px;
-      font-size: 15px; font-weight: 600; letter-spacing: 1px;
-      transition: background .25s, border-color .25s, transform .2s, box-shadow .25s;
-      backdrop-filter: blur(8px);
-    }
-    .hero-btn i { color: var(--red); font-size: 16px; }
-    .hero-btn:hover {
-      background: var(--red);
-      border-color: var(--red);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px var(--red-glow);
-    }
-    .hero-btn:hover i { color: var(--white); }
     .btn-primary {
       display: inline-flex; align-items: center; gap: 10px;
       background: var(--red); color: var(--white);
@@ -709,57 +726,20 @@
     .footer-bottom span { color: var(--red); }
 
     /* ─── WHATSAPP FLOAT ─────────────────────────────────────────── */
-    .whatsapp-float {
+    .whatsapp-float-direct {
       position: fixed; bottom: 32px; right: 32px; z-index: 999;
-      display: flex; flex-direction: column; align-items: flex-end; gap: 10px;
-    }
-    .wa-menu {
-      display: flex; flex-direction: column; align-items: flex-end; gap: 8px;
-      pointer-events: none;
-      opacity: 0; transform: translateY(12px);
-      transition: opacity .3s, transform .3s;
-    }
-    .wa-menu.open {
-      opacity: 1; transform: translateY(0); pointer-events: all;
-    }
-    .wa-option {
-      display: flex; align-items: center; gap: 10px;
-      background: var(--dark2);
-      border: 1px solid rgba(37,211,102,.3);
-      border-radius: 40px;
-      padding: 10px 18px 10px 14px;
-      color: var(--white); font-size: 13px; font-weight: 600;
-      white-space: nowrap;
-      transition: background .25s, border-color .25s, transform .2s;
-      box-shadow: 0 4px 16px rgba(0,0,0,.4);
-    }
-    .wa-option:hover {
-      background: #1a2e1a;
-      border-color: #25d366;
-      transform: translateX(-4px);
-    }
-    .wa-option-icon {
-      width: 32px; height: 32px; border-radius: 50%;
-      background: #25d366;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 16px; flex-shrink: 0;
-    }
-    .wa-option-text { display: flex; flex-direction: column; line-height: 1.2; }
-    .wa-option-text span:first-child { font-size: 11px; color: #25d366; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
-    .wa-option-text span:last-child { font-size: 13px; color: var(--white); }
-    .wa-main-btn {
       width: 60px; height: 60px;
-      background: #25d366;
-      border-radius: 50%; border: none; cursor: pointer;
+      background: #25d366; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       font-size: 28px; color: var(--white);
       box-shadow: 0 4px 20px rgba(37,211,102,.4);
-      transition: transform .3s, box-shadow .3s, background .3s;
       animation: waPulse 3s ease-in-out infinite;
-      position: relative;
+      transition: transform .2s, box-shadow .2s;
     }
-    .wa-main-btn:hover { box-shadow: 0 8px 32px rgba(37,211,102,.6); }
-    .wa-main-btn.open { background: #1db954; animation: none; transform: rotate(45deg); }
+    .whatsapp-float-direct:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 32px rgba(37,211,102,.6);
+    }
     @keyframes waPulse {
       0%,100% { box-shadow: 0 4px 20px rgba(37,211,102,.4); }
       50% { box-shadow: 0 4px 36px rgba(37,211,102,.7); }
@@ -892,31 +872,23 @@
       .section-header { margin-bottom: 48px; }
       .section-title { font-size: clamp(30px, 9vw, 44px); }
 
-      /* Hero mobile */
-      #hero { min-height: 100svh; justify-content: center; }
-      .hero-bg {
-        background-position: center top;
-        background-size: cover;
+      /* Hero mobile — stack vertical */
+      #hero { grid-template-columns: 1fr; grid-template-rows: auto auto; min-height: 100svh; }
+      .hero-right { height: 55vw; max-height: 320px; order: -1; }
+      .hero-right::before {
+        background: linear-gradient(to bottom, transparent 40%, var(--black) 100%);
       }
-      .hero-bg::after {
-        background:
-          linear-gradient(to bottom, rgba(8,8,8,.6) 0%, rgba(8,8,8,.45) 40%, rgba(8,8,8,.85) 100%),
-          radial-gradient(ellipse 80% 50% at 50% 30%, rgba(196,30,58,.12) 0%, transparent 70%);
+      .hero-left {
+        padding: 28px 6vw 60px;
+        order: 1;
       }
-      .hero-center {
-        padding-top: 100px;
-        padding-bottom: 80px;
-        padding-left: 6vw; padding-right: 6vw;
-        max-width: 100%;
-        justify-content: flex-end;
-        min-height: 100svh;
-      }
-      .hero-logo { width: 96px; height: 96px; margin-bottom: 20px; }
-      .hero-heading { font-size: clamp(22px, 6vw, 34px); margin-bottom: 12px; }
-      .hero-sub { font-size: 14px; margin-bottom: 32px; color: rgba(255,255,255,.7); }
-      .hero-btns { max-width: 100%; width: 100%; }
-      .hero-btn { padding: 16px 20px; font-size: 14px; border-radius: 40px; }
-      .hero-scroll { display: none; }
+      .hero-left::after { display: none; }
+      .hero-name { font-size: clamp(44px, 12vw, 72px); }
+      .hero-heading { font-size: 15px; margin-bottom: 20px; }
+      .hero-sub { font-size: 13px; margin-bottom: 32px; }
+      .hero-btns { max-width: 100%; }
+      .hero-btn, .hero-btn-wa { padding: 16px; font-size: 13px; }
+      .whatsapp-float-direct { bottom: 20px; right: 16px; width: 54px; height: 54px; font-size: 24px; }
 
       /* Promo faixa */
       .promo-faixa { padding: 16px 5vw; }
@@ -1125,26 +1097,22 @@
 
   <!-- HERO -->
   <section id="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-lines"></div>
-    <div class="hero-center fade-up">
-      <img src="logobarbearia.png" alt="Barbearia Vitão do Corte" class="hero-logo" />
-      <h1 class="hero-heading">Agende seu horário na<br>unidade de sua preferência</h1>
-      <p class="hero-sub">Seu melhor estilo começa com um bom corte.<br>Duas unidades, o mesmo padrão de qualidade.</p>
+    <div class="hero-left fade-up">
+      <div class="hero-tag">Barbeiro Profissional</div>
+      <h1 class="hero-name">LUIS<br><span class="red">DO CORTE</span></h1>
+      <p class="hero-heading">Corte que combina com você</p>
+      <p class="hero-sub">Agende seu horário com Luis e saia do jeito que gosta. Atendimento na unidade Luisiana, em São Bernardo do Campo.</p>
       <div class="hero-btns">
-        <a href="https://sites.appbarber.com.br/barbeariavitaod-a4rh" class="hero-btn" target="_blank">
-          <i class="fa fa-calendar-check"></i>
-          <span>Unidade Vila Flórida</span>
-        </a>
         <a href="https://sites.appbarber.com.br/barbeariavitaod-5az3" class="hero-btn" target="_blank">
-          <i class="fa fa-calendar-check"></i>
-          <span>Unidade Luisiana</span>
+          <i class="fa fa-calendar-check"></i> Marcar com Luis
+        </a>
+        <a href="https://wa.me/5511917149210?text=Olá%20Luis!%20Quero%20marcar%20um%20horário%20com%20você." class="hero-btn-wa" target="_blank">
+          <i class="fab fa-whatsapp"></i> Chamar no WhatsApp
         </a>
       </div>
     </div>
-    <div class="hero-scroll">
-      <i class="fa fa-chevron-down"></i>
-      <span>Explorar</span>
+    <div class="hero-right">
+      <img src="FELIPE DO CORTE.png" alt="Luis do Corte" class="hero-photo" />
     </div>
   </section>
 
@@ -1154,7 +1122,7 @@
       <span class="promo-faixa-text">
         No seu primeiro corte, pague apenas <span class="promo-price">R$ 30,00</span>
       </span>
-      <a href="#" onclick="openWAModal('Olá! Vi a oferta do primeiro corte por R$ 30,00 e gostaria de agendar!');return false;" class="promo-faixa-btn">
+      <a href="https://wa.me/5511917149210?text=Olá%20Luis!%20Vi%20a%20oferta%20do%20primeiro%20corte%20por%20R%24%2030%2C00%20e%20quero%20marcar%20com%20você!" class="promo-faixa-btn" target="_blank">
         <i class="fab fa-whatsapp"></i> Quero aproveitar
       </a>
     </div>
@@ -1179,53 +1147,53 @@
         <div class="service-name">Corte</div>
         <div class="service-desc">Na tesoura ou na máquina, o corte certo pro seu estilo com acabamento caprichado.</div>
         <div class="service-price">A consultar</div>
-        <a href="#" onclick="openWAModal('Olá! Gostaria de agendar um Corte.');return false;" class="service-btn"><i class="fab fa-whatsapp"></i> Agendar</a>
+        <a href="https://wa.me/5511917149210?text=Olá%20Luis!%20Quero%20marcar%20com%20você%20um%20Corte." class="service-btn" target="_blank"><i class="fab fa-whatsapp"></i> Marcar com Luis</a>
       </div>
       <div class="service-card fade-up">
         <div class="service-icon"><i class="fa fa-user-tie"></i></div>
         <div class="service-name">Barba</div>
         <div class="service-desc">Aparagem, alinhamento e modelagem. Barba no ponto com navalha e acabamento impecável.</div>
         <div class="service-price">R$ 35,00</div>
-        <a href="#" onclick="openWAModal('Olá! Gostaria de agendar uma Barba.');return false;" class="service-btn"><i class="fab fa-whatsapp"></i> Agendar</a>
+        <a href="https://wa.me/5511917149210?text=Olá%20Luis!%20Quero%20marcar%20com%20você%20uma%20Barba." class="service-btn" target="_blank"><i class="fab fa-whatsapp"></i> Marcar com Luis</a>
       </div>
       <div class="service-card fade-up">
         <div class="service-icon"><i class="fa fa-fire"></i></div>
         <div class="service-name">Corte + Barba</div>
         <div class="service-desc">O combo perfeito. Corte e barba numa visita só — sai renovado do jeito que gosta.</div>
         <div class="service-price">R$ 80,00</div>
-        <a href="#" onclick="openWAModal('Olá! Gostaria de agendar o Combo Corte + Barba.');return false;" class="service-btn"><i class="fab fa-whatsapp"></i> Agendar</a>
+        <a href="https://wa.me/5511917149210?text=Olá%20Luis!%20Quero%20marcar%20com%20você%20o%20Combo%20Corte%20%2B%20Barba." class="service-btn" target="_blank"><i class="fab fa-whatsapp"></i> Marcar com Luis</a>
       </div>
       <div class="service-card fade-up">
         <div class="service-icon"><i class="fa fa-child"></i></div>
         <div class="service-name">Corte Infantil</div>
         <div class="service-desc">O corte ideal para seu filho, no tempo dele e com a paciência que ele merece.</div>
         <div class="service-price">R$ 45,00</div>
-        <a href="#" onclick="openWAModal('Olá! Gostaria de agendar um Corte Infantil.');return false;" class="service-btn"><i class="fab fa-whatsapp"></i> Agendar</a>
+        <a href="https://wa.me/5511917149210?text=Olá%20Luis!%20Quero%20marcar%20com%20você%20um%20Corte%20Infantil." class="service-btn" target="_blank"><i class="fab fa-whatsapp"></i> Marcar com Luis</a>
       </div>
       <div class="service-card fade-up">
         <div class="service-icon"><i class="fa fa-star"></i></div>
         <div class="service-name">Pigmentação</div>
         <div class="service-desc">Disfarça entradas e falhas na barba. Visual mais fechado, confiante e jovem.</div>
         <div class="service-price">R$ 35,00</div>
-        <a href="#" onclick="openWAModal('Olá! Gostaria de agendar uma Pigmentação.');return false;" class="service-btn"><i class="fab fa-whatsapp"></i> Agendar</a>
+        <a href="https://wa.me/5511917149210?text=Olá%20Luis!%20Quero%20marcar%20com%20você%20uma%20Pigmentação." class="service-btn" target="_blank"><i class="fab fa-whatsapp"></i> Marcar com Luis</a>
       </div>
       <div class="service-card fade-up">
         <div class="service-icon"><i class="fa fa-gem"></i></div>
         <div class="service-name">Black Diamond</div>
         <div class="service-desc">Corte + Barba + Sobrancelha + Selagem + Hidratação. Presença, status e autoridade.</div>
         <div class="service-price">R$ 260,00</div>
-        <a href="#" onclick="openWAModal('Olá! Gostaria de agendar o combo Black Diamond Supremo.');return false;" class="service-btn"><i class="fab fa-whatsapp"></i> Agendar</a>
+        <a href="https://wa.me/5511917149210?text=Olá%20Luis!%20Quero%20marcar%20com%20você%20o%20combo%20Black%20Diamond." class="service-btn" target="_blank"><i class="fab fa-whatsapp"></i> Marcar com Luis</a>
       </div>
     </div>
     <div class="section-cta fade-up">
-      <p>Pronto para agendar? <strong>Escolha a unidade e garanta seu horário</strong></p>
+      <p>Pronto? <strong>Marque agora com Luis e garanta seu horário</strong></p>
       <div class="section-cta-btns">
-        <button onclick="openABModal()" class="btn-ab">
-          <i class="fa fa-calendar-check"></i> Agendar pelo AppBarber
-        </button>
-        <button onclick="openWAModal('Olá! Gostaria de agendar um serviço.')" class="btn-ab-outline">
-          <i class="fab fa-whatsapp"></i> Ou via WhatsApp
-        </button>
+        <a href="https://sites.appbarber.com.br/barbeariavitaod-5az3" class="btn-ab" target="_blank">
+          <i class="fa fa-calendar-check"></i> Marcar com Luis — AppBarber
+        </a>
+        <a href="https://wa.me/5511917149210?text=Olá%20Luis!%20Quero%20marcar%20um%20horário%20com%20você." class="btn-ab-outline" target="_blank">
+          <i class="fab fa-whatsapp"></i> Chamar no WhatsApp
+        </a>
       </div>
     </div>
   </section>
@@ -1244,12 +1212,12 @@
       <div class="section-line"></div>
     </div>
     <div class="gallery-grid fade-up">
-      <div class="gallery-item"><img src="galeria1.png" alt="Corte Vitão do Corte" /></div>
-      <div class="gallery-item"><img src="galeria2.png" alt="Corte Vitão do Corte" /></div>
-      <div class="gallery-item"><img src="galeria3.png" alt="Corte Vitão do Corte" /></div>
-      <div class="gallery-item"><img src="galeria4.png" alt="Corte Vitão do Corte" /></div>
-      <div class="gallery-item"><img src="galeria5.png" alt="Corte Vitão do Corte" /></div>
-      <div class="gallery-item"><img src="galeria6.png" alt="Corte Vitão do Corte" /></div>
+      <div class="gallery-item"><img src="galeria1.png" alt="Corte Luis do Corte" /></div>
+      <div class="gallery-item"><img src="galeria2.png" alt="Corte Luis do Corte" /></div>
+      <div class="gallery-item"><img src="galeria3.png" alt="Corte Luis do Corte" /></div>
+      <div class="gallery-item"><img src="galeria4.png" alt="Corte Luis do Corte" /></div>
+      <div class="gallery-item"><img src="galeria5.png" alt="Corte Luis do Corte" /></div>
+      <div class="gallery-item"><img src="galeria6.png" alt="Corte Luis do Corte" /></div>
     </div>
   </section>
 
@@ -1278,7 +1246,7 @@
           <li><i class="fa fa-check"></i> Perfil incluso</li>
           <li><i class="fa fa-check"></i> Agendamento prioritário</li>
         </ul>
-        <a href="#" onclick="openWAModal('Olá! Tenho interesse no Plano Blade Plus (Corte + Perfil) por R$ 120.');return false;" class="plano-btn">Quero esse plano</a>
+        <a href="https://wa.me/5511917149210?text=Olá%20Luis!%20Quero%20saber%20mais%20sobre%20o%20Plano%20Blade%20Plus%20(Corte%20%2B%20Perfil)%20por%20R%24%20120." class="plano-btn" target="_blank">Quero esse plano</a>
       </div>
 
       <div class="plano-card fade-up">
@@ -1291,13 +1259,13 @@
           <li><i class="fa fa-check"></i> Visual sempre alinhado</li>
           <li><i class="fa fa-check"></i> Agendamento prioritário</li>
         </ul>
-        <a href="#" onclick="openWAModal('Olá! Tenho interesse no Plano Vitão Corte Fixo (4 cortes) por R$ 150.');return false;" class="plano-btn">Quero esse plano</a>
+        <a href="https://wa.me/5511917149210?text=Olá%20Luis!%20Quero%20saber%20mais%20sobre%20o%20Plano%20Corte%20Fixo%20(4%20cortes)%20por%20R%24%20150." class="plano-btn" target="_blank">Quero esse plano</a>
       </div>
 
       <div class="plano-card plano-destaque fade-up">
         <div class="plano-badge">Mais popular</div>
         <div class="plano-icon"><i class="fa fa-fire"></i></div>
-        <div class="plano-name">Vitão Prime</div>
+        <div class="plano-name">Luis Prime</div>
         <div class="plano-includes">Corte + Barba</div>
         <div class="plano-price"><span>R$</span> 220</div>
         <ul class="plano-items">
@@ -1305,12 +1273,12 @@
           <li><i class="fa fa-check"></i> Barba inclusa</li>
           <li><i class="fa fa-check"></i> Agendamento prioritário</li>
         </ul>
-        <a href="#" onclick="openWAModal('Olá! Tenho interesse no Plano Vitão Prime (Corte + Barba) por R$ 220.');return false;" class="plano-btn">Quero esse plano</a>
+        <a href="https://wa.me/5511917149210?text=Olá%20Luis!%20Quero%20saber%20mais%20sobre%20o%20Plano%20Luis%20Prime%20(Corte%20%2B%20Barba)%20por%20R%24%20220." class="plano-btn" target="_blank">Quero esse plano</a>
       </div>
 
       <div class="plano-card fade-up">
         <div class="plano-icon"><i class="fa fa-gem"></i></div>
-        <div class="plano-name">Vitão Gold</div>
+        <div class="plano-name">Luis Gold</div>
         <div class="plano-includes">Corte + Barba + Sobrancelha</div>
         <div class="plano-price"><span>R$</span> 240</div>
         <ul class="plano-items">
@@ -1318,19 +1286,19 @@
           <li><i class="fa fa-check"></i> Barba inclusa</li>
           <li><i class="fa fa-check"></i> Sobrancelha inclusa</li>
         </ul>
-        <a href="#" onclick="openWAModal('Olá! Tenho interesse no Plano Vitão Gold (Corte + Barba + Sobrancelha) por R$ 240.');return false;" class="plano-btn">Quero esse plano</a>
+        <a href="https://wa.me/5511917149210?text=Olá%20Luis!%20Quero%20saber%20mais%20sobre%20o%20Plano%20Luis%20Gold%20(Corte%20%2B%20Barba%20%2B%20Sobrancelha)%20por%20R%24%20240." class="plano-btn" target="_blank">Quero esse plano</a>
       </div>
 
     </div>
     <div class="section-cta fade-up">
-      <p>Quer assinar um plano? <strong>Fale com a gente e comece hoje</strong></p>
+      <p>Quer assinar? <strong>Fala com Luis e comece essa semana</strong></p>
       <div class="section-cta-btns">
-        <button onclick="openABModal()" class="btn-ab">
-          <i class="fa fa-calendar-check"></i> Agendar pelo AppBarber
-        </button>
-        <button onclick="openWAModal('Olá! Tenho interesse em assinar um dos planos da Vitão do Corte.')" class="btn-ab-outline">
-          <i class="fab fa-whatsapp"></i> Assinar via WhatsApp
-        </button>
+        <a href="https://sites.appbarber.com.br/barbeariavitaod-5az3" class="btn-ab" target="_blank">
+          <i class="fa fa-calendar-check"></i> Marcar com Luis — AppBarber
+        </a>
+        <a href="https://wa.me/5511917149210?text=Olá%20Luis!%20Quero%20saber%20mais%20sobre%20os%20planos%20e%20marcar%20com%20você." class="btn-ab-outline" target="_blank">
+          <i class="fab fa-whatsapp"></i> Chamar no WhatsApp
+        </a>
       </div>
     </div>
   </section>
@@ -1348,49 +1316,12 @@
       </h2>
       <div class="section-line"></div>
     </div>
-    <div class="lojas-grid">
+    <div class="lojas-grid" style="grid-template-columns:1fr;max-width:720px;margin:0 auto;">
 
-      <!-- LOJA 1 -->
+      <!-- UNIDADE LUISIANA -->
       <div class="loja-card fade-up">
-        <div class="loja-number">01</div>
-        <div class="loja-tag">Vila Flórida</div>
-        <div class="loja-name">VITÃO DO CORTE</div>
-        <div class="loja-address">
-          <i class="fa fa-map-marker-alt"></i>
-          <span>Gen. Olímpio Mourão Filho, 269 — Vila Florida<br>São Bernardo do Campo / SP</span>
-        </div>
-        <div class="loja-hours">
-          <div class="loja-hour-row">
-            <span>Segunda e Terça</span><span>09:00 – 19:00</span>
-          </div>
-          <div class="loja-hour-row">
-            <span>Quarta e Quinta</span><span>09:00 – 20:00</span>
-          </div>
-          <div class="loja-hour-row">
-            <span>Sexta e Sábado</span><span>08:00 – 20:00</span>
-          </div>
-          <div class="loja-hour-row">
-            <span>Domingo</span><span>Fechado</span>
-          </div>
-        </div>
-        <div class="loja-actions">
-          <a href="https://sites.appbarber.com.br/barbeariavitaod-a4rh" class="btn-agendar" target="_blank">
-            <i class="fa fa-calendar-check"></i> Agendar — Vila Flórida
-          </a>
-          <a href="https://maps.app.goo.gl/NUrTLqh8Xv2zyNbf9" class="btn-maps" target="_blank">
-            <i class="fa fa-map"></i> Ver no Maps
-          </a>
-        </div>
-        <div class="loja-map">
-          <iframe src="https://maps.google.com/maps?q=Gen.+Ol%C3%ADmpio+Mour%C3%A3o+Filho,+269,+Vila+Florida,+S%C3%A3o+Bernardo+do+Campo,+SP&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-      </div>
-
-      <!-- LOJA 2 -->
-      <div class="loja-card fade-up">
-        <div class="loja-number">02</div>
         <div class="loja-tag">Luisiana</div>
-        <div class="loja-name">VITÃO DO CORTE</div>
+        <div class="loja-name">LUIS DO CORTE</div>
         <div class="loja-address">
           <i class="fa fa-map-marker-alt"></i>
           <span>Rua Luisiana, 980 — Taboão<br>São Bernardo do Campo / SP</span>
@@ -1411,7 +1342,7 @@
         </div>
         <div class="loja-actions">
           <a href="https://sites.appbarber.com.br/barbeariavitaod-5az3" class="btn-agendar" target="_blank">
-            <i class="fa fa-calendar-check"></i> Agendar — Luisiana
+            <i class="fa fa-calendar-check"></i> Marcar com Luis
           </a>
           <a href="https://maps.app.goo.gl/Js1AvkFJMpT9biqb6" class="btn-maps" target="_blank">
             <i class="fa fa-map"></i> Ver no Maps
@@ -1432,7 +1363,7 @@
         <div class="nav-logo" style="margin-bottom:16px">
           <img src="logobarbearia.png" alt="Barbearia Vitão do Corte" class="nav-logo-img" />
         </div>
-        <p>Seu melhor estilo começa com um bom corte. Duas unidades em São Paulo prontas pra te atender.</p>
+        <p>Corte que combina com você. Marque com Luis na unidade Luisiana, em São Bernardo do Campo.</p>
         <div class="footer-social">
           <!-- Substitua os links pelas suas redes sociais -->
           <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
@@ -1462,100 +1393,21 @@
       <div class="footer-col">
         <h4>Contato</h4>
         <ul>
-          <li><a href="#" onclick="openWAModal('Olá! Gostaria de mais informações.');return false;"><i class="fab fa-whatsapp" style="color:var(--red);margin-right:8px"></i>WhatsApp</a></li>
-          <li><a href="#lojas"><i class="fa fa-map-marker-alt" style="color:var(--red);margin-right:8px"></i>Vila Flórida</a></li>
+          <li><a href="https://wa.me/5511917149210?text=Olá%20Luis!%20Quero%20marcar%20um%20horário%20com%20você." target="_blank"><i class="fab fa-whatsapp" style="color:var(--red);margin-right:8px"></i>WhatsApp</a></li>
           <li><a href="#lojas"><i class="fa fa-map-marker-alt" style="color:var(--red);margin-right:8px"></i>Luisiana</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2025 <span>Barbearia Vitão do Corte</span>. Todos os direitos reservados.</p>
+      <p>&copy; 2025 <span>Luis do Corte</span>. Todos os direitos reservados.</p>
       <p>Qualidade que fala por você <span>&#x2665;</span></p>
     </div>
   </footer>
 
-  <!-- MODAL APPBARBER - SELEÇÃO DE UNIDADE -->
-  <div class="ab-modal-overlay" id="abModalOverlay">
-    <div class="ab-modal">
-      <button class="ab-modal-close" id="abModalClose"><i class="fa fa-times"></i></button>
-      <div class="ab-modal-logo">
-        <img src="logobarbearia.png" alt="Vitão do Corte" />
-      </div>
-      <h3 class="ab-modal-title">Escolha a unidade</h3>
-      <p class="ab-modal-sub">Selecione e agende direto pelo AppBarber</p>
-      <div class="ab-modal-btns">
-        <a href="https://sites.appbarber.com.br/barbeariavitaod-a4rh" class="ab-modal-btn" target="_blank">
-          <div class="ab-modal-btn-icon"><i class="fa fa-calendar-check"></i></div>
-          <div class="ab-modal-btn-info">
-            <span>Vila Flórida</span>
-            <small>São Bernardo do Campo</small>
-          </div>
-          <i class="fa fa-chevron-right"></i>
-        </a>
-        <a href="https://sites.appbarber.com.br/barbeariavitaod-5az3" class="ab-modal-btn" target="_blank">
-          <div class="ab-modal-btn-icon"><i class="fa fa-calendar-check"></i></div>
-          <div class="ab-modal-btn-info">
-            <span>Luisiana</span>
-            <small>São Bernardo do Campo</small>
-          </div>
-          <i class="fa fa-chevron-right"></i>
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL SELEÇÃO DE UNIDADE -->
-  <div class="wa-modal-overlay" id="waModalOverlay">
-    <div class="wa-modal">
-      <button class="wa-modal-close" id="waModalClose"><i class="fa fa-times"></i></button>
-      <div class="wa-modal-logo">
-        <img src="logobarbearia.png" alt="Vitão do Corte" />
-      </div>
-      <h3 class="wa-modal-title">Escolha a unidade</h3>
-      <p class="wa-modal-sub">Selecione a unidade mais próxima de você</p>
-      <div class="wa-modal-btns">
-        <a id="waModalFlorida" class="wa-modal-btn" target="_blank">
-          <div class="wa-modal-btn-icon"><i class="fab fa-whatsapp"></i></div>
-          <div class="wa-modal-btn-info">
-            <span>Vila Flórida</span>
-            <small>São Bernardo do Campo</small>
-          </div>
-          <i class="fa fa-chevron-right"></i>
-        </a>
-        <a id="waModalLuisiana" class="wa-modal-btn" target="_blank">
-          <div class="wa-modal-btn-icon"><i class="fab fa-whatsapp"></i></div>
-          <div class="wa-modal-btn-info">
-            <span>Luisiana</span>
-            <small>São Bernardo do Campo</small>
-          </div>
-          <i class="fa fa-chevron-right"></i>
-        </a>
-      </div>
-    </div>
-  </div>
-
   <!-- WHATSAPP FLOATING BUTTON -->
-  <div class="whatsapp-float" id="waFloat">
-    <div class="wa-menu" id="waMenu">
-      <a href="https://wa.me/5511953767534?text=Olá!%20Gostaria%20de%20agendar%20na%20unidade%20Vila%20Flórida." class="wa-option" target="_blank">
-        <div class="wa-option-icon"><i class="fab fa-whatsapp"></i></div>
-        <div class="wa-option-text">
-          <span>Unidade</span>
-          <span>Vila Flórida</span>
-        </div>
-      </a>
-      <a href="https://wa.me/5511917149210?text=Olá!%20Gostaria%20de%20agendar%20na%20unidade%20Luisiana." class="wa-option" target="_blank">
-        <div class="wa-option-icon"><i class="fab fa-whatsapp"></i></div>
-        <div class="wa-option-text">
-          <span>Unidade</span>
-          <span>Luisiana</span>
-        </div>
-      </a>
-    </div>
-    <button class="wa-main-btn" id="waBtn" aria-label="WhatsApp">
-      <i class="fab fa-whatsapp"></i>
-    </button>
-  </div>
+  <a class="whatsapp-float-direct" href="https://wa.me/5511917149210?text=Olá%20Luis!%20Quero%20marcar%20um%20horário%20com%20você." target="_blank" aria-label="WhatsApp Luis">
+    <i class="fab fa-whatsapp"></i>
+  </a>
 
   <script>
     // Navbar scroll
@@ -1576,45 +1428,6 @@
     });
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMobileMenu(); });
 
-    // Modal seleção de unidade
-    const waModalOverlay = document.getElementById('waModalOverlay');
-    const waModalClose   = document.getElementById('waModalClose');
-    const waModalFlorida  = document.getElementById('waModalFlorida');
-    const waModalLuisiana = document.getElementById('waModalLuisiana');
-
-    function openWAModal(msg) {
-      const encoded = encodeURIComponent(msg);
-      waModalFlorida.href  = 'https://wa.me/5511953767534?text=' + encoded;
-      waModalLuisiana.href = 'https://wa.me/5511917149210?text=' + encoded;
-      waModalOverlay.classList.add('open');
-    }
-    waModalClose.addEventListener('click', () => waModalOverlay.classList.remove('open'));
-    waModalOverlay.addEventListener('click', (e) => {
-      if (e.target === waModalOverlay) waModalOverlay.classList.remove('open');
-    });
-
-    // AppBarber modal
-    const abModalOverlay = document.getElementById('abModalOverlay');
-    const abModalClose   = document.getElementById('abModalClose');
-    function openABModal() { abModalOverlay.classList.add('open'); }
-    abModalClose.addEventListener('click', () => abModalOverlay.classList.remove('open'));
-    abModalOverlay.addEventListener('click', (e) => {
-      if (e.target === abModalOverlay) abModalOverlay.classList.remove('open');
-    });
-
-    // WhatsApp float menu
-    const waBtn  = document.getElementById('waBtn');
-    const waMenu = document.getElementById('waMenu');
-    waBtn.addEventListener('click', () => {
-      waMenu.classList.toggle('open');
-      waBtn.classList.toggle('open');
-    });
-    document.addEventListener('click', (e) => {
-      if (!document.getElementById('waFloat').contains(e.target)) {
-        waMenu.classList.remove('open');
-        waBtn.classList.remove('open');
-      }
-    });
 
     // Fade-up on scroll
     const observer = new IntersectionObserver((entries) => {
